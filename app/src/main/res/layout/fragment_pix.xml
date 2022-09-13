@@ -120,19 +120,42 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <EditText
-                            android:id="@+id/editText"
+<!--                        <EditText-->
+<!--                            android:id="@+id/editText"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginStart="@dimen/margin_layout_pix"-->
+<!--                            android:layout_marginEnd="@dimen/margin_layout_pix"-->
+<!--                            android:inputType="numberDecimal"-->
+<!--                            android:minHeight="48dp"-->
+<!--                            android:layout_marginTop="10dp"-->
+<!--                            app:layout_constraintEnd_toEndOf="parent"-->
+<!--                            app:layout_constraintStart_toStartOf="parent"-->
+<!--                            app:layout_constraintTop_toBottomOf="@id/txtv_valor_transferencia"-->
+<!--                            tools:text="R$" />-->
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/edtTextLayout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/margin_layout_pix"
-                            android:layout_marginEnd="@dimen/margin_layout_pix"
-                            android:inputType="numberDecimal"
-                            android:minHeight="48dp"
-                            android:layout_marginTop="10dp"
-                            app:layout_constraintEnd_toEndOf="parent"
+                            android:textColorHint="@color/black"
                             app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginTop="10dp"
                             app:layout_constraintTop_toBottomOf="@id/txtv_valor_transferencia"
-                            tools:text="R$" />
+                            android:layout_marginStart="@dimen/margin_layout_pix"
+                            android:layout_marginEnd="@dimen/margin_layout_pix">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/editText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:hint="@string/r"
+                                android:inputType="numberDecimal"/>
+
+
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
                         <Button
                             android:id="@+id/next_button"
@@ -148,7 +171,7 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/editText" />
+                            app:layout_constraintTop_toBottomOf="@id/edtTextLayout" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </ScrollView>
             </androidx.constraintlayout.widget.ConstraintLayout>

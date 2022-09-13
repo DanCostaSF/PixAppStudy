@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Exemplo Pix</string>
+    <string name="pix">Pix</string>
+    <string name="info_button">info button</string>
+    <string name="back_button">back_button</string>
+    <string name="saldo_limite">Saldo + Limite</string>
+    <string name="toque_para_vizualizar">Toque para vizualizar</string>
+    <string name="txtv_valor_transferencia">Digite o valor da \ntransferência</string>
+    <string name="proximo">Próximo</string>
+    <string name="r_10000_00">R$ 10000.00</string>
+</resources>

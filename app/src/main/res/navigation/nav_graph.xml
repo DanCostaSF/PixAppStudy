@@ -9,5 +9,14 @@
         android:id="@+id/pixFragment"
         android:name="br.com.android.exemplopix.PixFragment"
         android:label="PixFragment"
-        tools:layout="@layout/fragment_pix"/>
+        tools:layout="@layout/fragment_pix">
+        <action
+            android:id="@+id/action_pixFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="br.com.android.exemplopix.InfoFragment"
+        android:label="InfoFragment"
+        tools:layout="@layout/fragment_info"/>
 </navigation>

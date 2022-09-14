@@ -4,7 +4,6 @@ import android.app.AlertDialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,8 +19,8 @@ import java.util.*
 
 // Separar onCreateView e onViewCreated (X)
 // Separar os comportamentos em novas funções (X)
-// Se o valor estiver vazio, desabilitar o botão Próximo, portanto tu pode remover o teste de o valor estar vazio no show toast.(X)
-// Ambos os valores que são exibidos, formatar para BRL - R$ 10.899,00
+// Se o valor estiver vazio, desabilitar o botão Próximo, portanto tu pode remover o teste de o valor estar vazio no show toast.( )
+// Ambos os valores que são exibidos, formatar para BRL - R$ 10.899,00(X)
 // Toque para visualizar - Ele mesmo seja alterados, no caso.(X)
 // Click no <, voltar para a tela anterior. No fim, eu quero que ele feche o app pq é a primeira tela.(X)
 // Quando clicar no (?) mostrar um dialog.(X)
@@ -35,6 +34,7 @@ class PixFragment : Fragment() {
     private var _binding: FragmentPixBinding? = null
     private val binding get() = _binding!!
 
+    private var numero : String? = "R\$ 0,00"
     // Legal no onCreateView() é ter apenas uma função, que é inflar o layout (O que na verdade nem vamos mais fazer pq vai estar no BaseFragment)
 
     // Agora para adicionar comportamentos, o legal é utilizar o onViewCreated()
@@ -52,7 +52,7 @@ class PixFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val mlocal = Locale("pt", "BR")
-        binding.editText.addTextChangedListener(MoneyTextWatcher(binding.editText, mlocal))
+        binding.editText.addTextChangedListener(MaskMoney(binding.editText, mlocal))
 
         binding.apply {
 
@@ -109,14 +109,14 @@ class PixFragment : Fragment() {
         nextButton.setOnClickListener {
             val snackbar = Snackbar.make(
                 it,
-                binding.editText.text!!,
+                numero.toString(),
                 Snackbar.LENGTH_SHORT
             )
             snackbar.show()
         }
     }
 
-    inner class MoneyTextWatcher(editText: EditText?, locale: Locale?) : TextWatcher {
+    inner class MaskMoney(editText: EditText?, locale: Locale?) : TextWatcher {
         private val editTextReferenceWeak: WeakReference<EditText>
         private val locale: Locale
 
@@ -128,13 +128,14 @@ class PixFragment : Fragment() {
         override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
         override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
         override fun afterTextChanged(editable: Editable) {
-            Log.i("teste", editable.toString())
 
             val editText: EditText = editTextReferenceWeak.get() ?: return
             editText.removeTextChangedListener(this)
             val parsed: BigDecimal = parseToBigDecimal(editable.toString(), locale)
             val formatted: String = NumberFormat.getCurrencyInstance(locale).format(parsed)
             editText.setText(formatted)
+            numero = formatted
+
             editText.setSelection(formatted.length)
             editText.addTextChangedListener(this)
         }

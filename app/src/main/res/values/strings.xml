@@ -10,4 +10,5 @@
     <string name="r_10000_00">R$ 10.000,00</string>
     <string name="r">R$</string>
     <string name="voc_chegou_no_fragment_d_vidas">Você chegou no fragment dúvidas</string>
+    <string name="r_0_00"><![CDATA[R$ 0,00]]></string>
 </resources>

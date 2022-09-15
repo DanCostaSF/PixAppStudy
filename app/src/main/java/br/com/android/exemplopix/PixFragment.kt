@@ -17,24 +17,24 @@ import java.math.BigDecimal
 import java.text.NumberFormat
 import java.util.*
 
-// Separar onCreateView e onViewCreated (X)
-// Separar os comportamentos em novas funções (X)
 // Se o valor estiver vazio, desabilitar o botão Próximo, portanto tu pode remover o teste de o valor estar vazio no show toast.( )
-// Ambos os valores que são exibidos, formatar para BRL - R$ 10.899,00(X)
-// Toque para visualizar - Ele mesmo seja alterados, no caso.(X)
-// Click no <, voltar para a tela anterior. No fim, eu quero que ele feche o app pq é a primeira tela.(X)
-// Quando clicar no (?) mostrar um dialog.(X)
-// Titulo: Dúvida? Mensagem: Tem alguma dúdiva? Dois botões: Sim e Não.(X)
-// Clicar no Não: fecha o dialog. Clicou no sim: Navegar para um novo fragment.(X)
-// Você chegou no fragment dúvidas. Titulo: Dúvida Pix. (<) Quando clicar no voltar, voltar para a tela anterior.(X)
-// Trocar a toolbar para <com.google.android.material.appbar.AppBarLayout e dentro dele <com.google.android.material.appbar.MaterialToolbar(X)
-// Scroll view direto embaixo do Toolbar(X)
+// Replicar botão do navigation E quando clicar em voltar, perguntar em um novo dialog se usuário quer voltar mesmo. Se clicar em não, continua na tela de dúvidas. Se clicar em sim, fechar a tela atual.
+// Colocar MaskMoney em outro package common
+// O valor/TOque para visualizar seja alterado de acordo com o container
+// Controlar quando clicar no dialog para não permitir abrir duas vezes o dialog
+// Colocar click fora para fechar todos os dialogs.
+// Criar um parametro para passar para o fragment de dúvidas. Parametro: List<String>?. Quando tu chegar na tela de dúvidas, formatar as Strings em uma String só no seguinte formato:
+// Aleluia, Aiaiai, Danilo é brabo. Se passar apenas uma, tem que ter apenas o ponto. Ex: Danilo. Se passar uma lista sem items ou o parametro nulo, exibir mensagem default: Nenhum parametro para listar.
+// Na primeira tela, os campos não podem se sobrepor.
+// Na segunda tela, a frase "Voce chegou..." precisa estar centralizada.
+// Colocar um valor máximo de 99.999,99
+//
 class PixFragment : Fragment() {
 
     private var _binding: FragmentPixBinding? = null
     private val binding get() = _binding!!
 
-    private var numero : String? = "R\$ 0,00"
+    private var numero: String? = "R\$ 0,00"
     // Legal no onCreateView() é ter apenas uma função, que é inflar o layout (O que na verdade nem vamos mais fazer pq vai estar no BaseFragment)
 
     // Agora para adicionar comportamentos, o legal é utilizar o onViewCreated()
@@ -55,28 +55,25 @@ class PixFragment : Fragment() {
         binding.editText.addTextChangedListener(MaskMoney(binding.editText, mlocal))
 
         binding.apply {
-
             setupToolbar()
-
+            setupNavigationListener()
             setupNextButton()
-
             setupToqueButton()
+        }
+    }
+
+    private fun FragmentPixBinding.setupNavigationListener() {
+        toolbar.setNavigationOnClickListener {
+            requireActivity().finishAffinity()
         }
     }
 
     private fun FragmentPixBinding.setupToolbar() {
         toolbar.setOnMenuItemClickListener { menuItem ->
-            when (menuItem.itemId) {
-                R.id.back_button -> {
-                    this@PixFragment.requireActivity().finishAffinity()
-                    true
-                }
-                R.id.info_button -> {
-                    setupInfoButton()
-                    true
-                }
-                else -> false
+            if (menuItem.itemId == R.id.info_button) {
+                setupInfoButton()
             }
+            true
         }
     }
 
@@ -114,6 +111,8 @@ class PixFragment : Fragment() {
             )
             snackbar.show()
         }
+
+        nextButton.isEnabled = false
     }
 
     inner class MaskMoney(editText: EditText?, locale: Locale?) : TextWatcher {
@@ -132,6 +131,7 @@ class PixFragment : Fragment() {
             val editText: EditText = editTextReferenceWeak.get() ?: return
             editText.removeTextChangedListener(this)
             val parsed: BigDecimal = parseToBigDecimal(editable.toString(), locale)
+            binding.nextButton.isEnabled = parsed > BigDecimal(0)
             val formatted: String = NumberFormat.getCurrencyInstance(locale).format(parsed)
             editText.setText(formatted)
             numero = formatted
@@ -141,7 +141,6 @@ class PixFragment : Fragment() {
         }
 
         private fun parseToBigDecimal(value: String, locale: Locale): BigDecimal {
-
             val replaceable = java.lang.String.format(
                 "[%s,.\\s]",
                 NumberFormat.getCurrencyInstance(locale).currency?.symbol

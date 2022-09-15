@@ -8,7 +8,11 @@ import java.math.BigDecimal
 import java.text.NumberFormat
 import java.util.*
 
-class MaskMoney(editText: EditText?, locale: Locale?) : TextWatcher {
+class MaskMoney(
+    editText: EditText?,
+    locale: Locale?,
+    val onAfterTextChanged: (BigDecimal) -> Unit,
+) : TextWatcher {
     private val editTextReferenceWeak: WeakReference<EditText>
     private val locale: Locale
 
@@ -20,10 +24,10 @@ class MaskMoney(editText: EditText?, locale: Locale?) : TextWatcher {
     override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
     override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
     override fun afterTextChanged(editable: Editable) {
-
         val editText: EditText = editTextReferenceWeak.get() ?: return
         editText.removeTextChangedListener(this)
         val parse: BigDecimal = parseToBigDecimal(editable.toString(), locale)
+        onAfterTextChanged(parse)
         parsed = parse
         val formatted: String = NumberFormat.getCurrencyInstance(locale).format(parse)
         editText.setText(formatted)

@@ -13,4 +13,25 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="ButtonPixFragment" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:enabled">false</item>
+        <item name="android:drawableEnd">@drawable/ic_next_24</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginStart">@dimen/margin_layout_pix</item>
+        <item name="android:layout_marginEnd">@dimen/margin_layout_pix</item>
+        <item name="android:layout_marginBottom">@dimen/margin_layout_pix</item>
+        <item name="android:text">@string/proximo</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="layout_constraintVertical_bias">1.0</item>
+    </style>
+
+    <style name="TextViewPix" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:layout_marginStart">@dimen/margin_layout_pix</item>
+        <item name="android:layout_marginTop">@dimen/margin_top_pix</item>
+        <item name="android:text">@string/txtv_valor_transferencia</item>
+        <item name="android:textColor">@color/textvalor_color</item>
+        <item name="android:textSize">@dimen/text_view_valor_transf</item>
+
+    </style>
 </resources>

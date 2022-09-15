@@ -107,13 +107,9 @@
 
                     <TextView
                         android:id="@+id/txtv_valor_transferencia"
+                        style="@style/TextViewPix"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/margin_layout_pix"
-                        android:layout_marginTop="@dimen/margin_top_pix"
-                        android:text="@string/txtv_valor_transferencia"
-                        android:textColor="@color/textvalor_color"
-                        android:textSize="@dimen/text_view_valor_transf"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -136,18 +132,11 @@
                     <Button
                         android:id="@+id/next_button"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_marginStart="@dimen/margin_layout_pix"
-                        android:layout_marginEnd="@dimen/margin_layout_pix"
-                        android:drawableEnd="@drawable/ic_next_24"
-                        android:text="@string/proximo"
-                        android:textAllCaps="false"
-                        android:textStyle="bold"
+                        style="@style/ButtonPixFragment"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/editText"
-                        app:layout_constraintVertical_bias="1.0" />
+                        app:layout_constraintTop_toBottomOf="@id/editText" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

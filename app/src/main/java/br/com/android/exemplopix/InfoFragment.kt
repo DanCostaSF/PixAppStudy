@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import br.com.android.exemplopix.commons.navBack
 import br.com.android.exemplopix.commons.navTo
+import br.com.android.exemplopix.commons.showAlertDialog
 import br.com.android.exemplopix.databinding.FragmentInfoBinding
 
 class InfoFragment : Fragment() {
@@ -32,10 +33,15 @@ class InfoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val list = args.nomes?.toMutableList()
         val lista = list?.joinToString(separator = ", ") {
+            if (it.isEmpty()) {
+                return@joinToString "Nenhum parametro para listar"
+            }
             it
         }
 
-        Log.i("teste", lista.toString())
+        binding.textView.text = "$lista."
+
+//        Log.i("teste", lista.toString())
         binding.apply {
             setupNavigationListener()
         }
@@ -49,17 +55,14 @@ class InfoFragment : Fragment() {
 
     private fun setupBackButton() {
         binding.toolbar.isEnabled = false
-        val builder = AlertDialog.Builder(requireContext())
-        builder.setTitle("Dúvida?")
-        builder.setMessage("Tem alguma dúvida?")
-        builder.setPositiveButton("Sim") { _, _ ->
-            navBack()
-        }
-        builder.setNegativeButton("Não") { _, _ ->
-            binding.toolbar.isEnabled = true
-        }
-        val alertDialog: AlertDialog = builder.create()
-        alertDialog.setCancelable(true)
-        alertDialog.show()
+        showAlertDialog(
+            getString(R.string.dialog_info),
+            null,
+            getString(R.string.sim),
+            { navBack() },
+            getString(R.string.nao),
+            { binding.toolbar.isEnabled = true },
+            true
+        )
     }
 }

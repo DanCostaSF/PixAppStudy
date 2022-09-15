@@ -18,5 +18,11 @@
         android:id="@+id/infoFragment"
         android:name="br.com.android.exemplopix.InfoFragment"
         android:label="InfoFragment"
-        tools:layout="@layout/fragment_info"/>
+        tools:layout="@layout/fragment_info">
+        <argument
+            android:name="nomes"
+            app:argType="string[]"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
 </navigation>

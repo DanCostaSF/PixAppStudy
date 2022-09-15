@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import br.com.android.exemplopix.commons.BaseFragment
 import br.com.android.exemplopix.commons.MaskMoney
 import br.com.android.exemplopix.commons.MaskMoney.Companion.numero
 import br.com.android.exemplopix.commons.navTo
@@ -24,29 +26,11 @@ import java.util.*
 // Criar um style para o "Digite o valor da transferência"(X)
 // Criar style para o botão(X)
 // Criar o ViewModel e colocar tudo o que for possível de lógica lá.
-class PixFragment : Fragment() {
+class PixFragment : BaseFragment<FragmentPixBinding>(
+    R.layout.fragment_pix
+) {
 
-    private var _binding: FragmentPixBinding? = null
-    private val binding get() = _binding!!
-
-    private var _pixViewModel: PixViewModel? = null
-    private val pixViewModel get() = _pixViewModel!!
-
-    // Legal no onCreateView() é ter apenas uma função, que é inflar o layout (O que na verdade nem vamos mais fazer pq vai estar no BaseFragment)
-
-    // Agora para adicionar comportamentos, o legal é utilizar o onViewCreated()
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentPixBinding.inflate(inflater, container, false)
-//        _pixViewModel = ViewModelProvider(
-//            this, viewModelFactory
-//        )[PixViewModel::class.java]
-        return binding.root
-    }
+    private val _pixViewModel: PixViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -127,6 +111,14 @@ class PixFragment : Fragment() {
             )
             snackbar.show()
         }
+    }
+
+    override fun setupViewModel() {
+
+    }
+
+    override fun setupObservers() {
+        binding.vm = _pixViewModel
     }
 }
 

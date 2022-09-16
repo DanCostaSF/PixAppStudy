@@ -1,15 +1,12 @@
 package br.com.android.exemplopix
 
-import android.app.AlertDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import br.com.android.exemplopix.commons.navBack
-import br.com.android.exemplopix.commons.navTo
 import br.com.android.exemplopix.commons.showAlertDialog
 import br.com.android.exemplopix.databinding.FragmentInfoBinding
 
@@ -32,12 +29,18 @@ class InfoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val list = args.nomes?.toMutableList()
-        val lista = list?.joinToString(separator = ", ") {
-            if (it.isEmpty()) {
-                return@joinToString "Nenhum parametro para listar"
-            }
-            it
+        val list2 = list?.filter {
+            it.isNotEmpty()
         }
+
+        val lista = if(list2.isNullOrEmpty()) {
+            "Nenhum parâmetro para listar"
+        } else {
+            list2.joinToString(separator = ", ") {
+                it
+            }
+        }
+
 
         binding.textView.text = "$lista."
 
@@ -61,7 +64,7 @@ class InfoFragment : Fragment() {
             getString(R.string.sim),
             { navBack() },
             getString(R.string.nao),
-            { binding.toolbar.isEnabled = true },
+            {  },
             true
         )
     }

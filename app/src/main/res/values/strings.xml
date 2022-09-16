@@ -16,4 +16,5 @@
     <string name="sim">Sim</string>
     <string name="nao">Não</string>
     <string name="dialog_info">"Você deseja mesmo sair?"</string>
+    <string name="duvidas">Dúvidas?</string>
 </resources>

@@ -19,11 +19,7 @@
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:navigationIcon="@drawable/ic_back_24"
-                app:title="Dúvidas?"
-                app:titleCentered="true"
-                app:titleTextColor="@color/white" />
+                style="@style/MaterialToolbarInfo" />
         </com.google.android.material.appbar.AppBarLayout>
 
 
@@ -31,10 +27,7 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/voc_chegou_no_fragment_d_vidas"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:gravity="center"
+            style="@style/TextViewInfo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -31,7 +31,8 @@
                 app:navigationIcon="@drawable/ic_back_24"
                 app:title="@string/pix"
                 app:titleCentered="true"
-                app:titleTextColor="@color/white" />
+                app:titleTextColor="@color/white"
+                app:navigationOnClickListener="@{() -> vm.onNavigationClick()}" />
 
         </com.google.android.material.appbar.AppBarLayout>
 

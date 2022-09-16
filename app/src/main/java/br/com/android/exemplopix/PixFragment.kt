@@ -16,16 +16,12 @@ import br.com.android.exemplopix.databinding.FragmentPixBinding
 import com.google.android.material.snackbar.Snackbar
 import java.util.*
 
-// Colocar MaskMoney em outro package common(X)
-// Criar um parametro para passar para o fragment de dúvidas. Parametro: List<String>?. (X)
-// Quando tu chegar na tela de dúvidas, formatar as Strings em uma String só no seguinte formato:(X)
-// Aleluia, Aiaiai, Danilo é brabo. Se passar apenas uma, tem que ter apenas o ponto.(X)
-// Ex: Danilo. Se passar uma lista sem items ou o parametro nulo, exibir mensagem default: Nenhum parametro para listar.(X)
-// Colocar as strings no arquivo string.xml(X)
-// Criar uma extension para exibição de dialog com Sim e Não que receba: Titulo, mensagem, onNãoClick{} e onSimCLick() (X)
-// Criar um style para o "Digite o valor da transferência"(X)
-// Criar style para o botão(X)
-// Criar o ViewModel e colocar tudo o que for possível de lógica lá.
+// Rever o duplo click no info icon.
+// Nenhum parametro para listar somente deve ser exibir SE A LISTA estiver vazia. Agora, se tiver e um dos itens for vazio "", não exibir esse item.
+// showAlertDialog passar a receber o Int e fazer o getString lá dentro. (receber o menuItem por parâmetro) @StringRes
+// Criar style de todos os textos exbidos. Inclusive o da outra tela. Criar style pro edit text que vai ser style.
+// View -> replicar o comportamente dos clicks. TBM do click do menuItem.
+// disable do botão no ViewModel, criando val isEnabled = MutableLiveData(false) ... isEnabled.value = true
 class PixFragment : BaseFragment<FragmentPixBinding>(
     R.layout.fragment_pix
 ) {
@@ -85,7 +81,7 @@ class PixFragment : BaseFragment<FragmentPixBinding>(
             getString(R.string.sim),
             { navTo(PixFragmentDirections.actionPixFragmentToInfoFragment(list)) },
             getString(R.string.nao),
-            {},
+            { },
             true
         )
     }
@@ -114,12 +110,15 @@ class PixFragment : BaseFragment<FragmentPixBinding>(
     }
 
     override fun setupViewModel() {
-
+        binding.vm = _pixViewModel
     }
 
     override fun setupObservers() {
-        binding.vm = _pixViewModel
+        _pixViewModel.onNavigateBack.observe(viewLifecycleOwner) { mustNavigate ->
+            if (mustNavigate) requireActivity().finishAffinity()
+        }
     }
+
 }
 
 

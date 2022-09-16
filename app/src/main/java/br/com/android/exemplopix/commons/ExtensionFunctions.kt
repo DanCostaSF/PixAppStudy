@@ -31,8 +31,3 @@ fun Fragment.showAlertDialog(
             show()
         }
 }
-
-@BindingAdapter("isVisible")
-fun View.isVisible(visible: Boolean) {
-    visibility = if (visible) View.VISIBLE else View.GONE
-}

@@ -11,6 +11,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background">
@@ -51,6 +52,7 @@
                     android:id="@+id/click_money_show"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="@{() -> vm.onBalanceContainerClick()}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -66,18 +68,9 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/txt_valor"
-                        style="@style/TextViewPixTxtValor"
-                        isVisible="@{() -> vm.onTextView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
                         android:id="@+id/txtv_toque_vizualizar"
-                        style="@style/TextViewPixToqueVizu"
-                        isVisible="@{() -> vm.onTextView"
+                        android:text="to quye ..."
+                        isVisible="@{vm.isVisible}"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         app:layout_constraintEnd_toEndOf="parent"

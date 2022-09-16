@@ -6,21 +6,19 @@ import androidx.lifecycle.ViewModel
 
 class PixViewModel : ViewModel() {
 
+    val isVisible = MutableLiveData(true)
+
     val onNavigateBack = MutableLiveData(false)
-    var onTextView = MutableLiveData(true)
+
     var snackBar = MutableLiveData(false)
     var isButtonEnabled = MutableLiveData(false)
 
-    fun onNavigationClick(){
+    fun onNavigationClick() {
         onNavigateBack.value = true
     }
 
-    fun onTextViewVisibility() {
-        if (onTextView.value == false) {
-            onTextView.postValue(true)
-        }else {
-            onTextView.postValue(false)
-        }
+    fun onBalanceContainerClick() {
+        isVisible.value = false
     }
 
     fun onButtonDisable(value: String) {

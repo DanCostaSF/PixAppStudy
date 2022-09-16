@@ -9,7 +9,7 @@ class PixViewModel : ViewModel() {
     val onNavigateBack = MutableLiveData(false)
     var onTextView = MutableLiveData(true)
     var snackBar = MutableLiveData(false)
-    var buttonDisable = MutableLiveData(false)
+    var isButtonEnabled = MutableLiveData(false)
 
     fun onNavigationClick(){
         onNavigateBack.value = true
@@ -25,9 +25,9 @@ class PixViewModel : ViewModel() {
 
     fun onButtonDisable(value: String) {
         if (value != "0.00") {
-            buttonDisable.postValue(true)
+            isButtonEnabled.postValue(true)
         } else {
-            buttonDisable.postValue(false)
+            isButtonEnabled.postValue(false)
         }
     }
 

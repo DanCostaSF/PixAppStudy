@@ -14,15 +14,15 @@ import br.com.android.exemplopix.databinding.FragmentPixBinding
 import com.google.android.material.snackbar.Snackbar
 import java.util.*
 
-// Rever o duplo click no info icon.(X)
-// Nenhum parametro para listar somente deve ser exibir SE A LISTA estiver vazia. Agora, se tiver e um dos itens for vazio "", não exibir esse item.(X)
-// showAlertDialog passar a receber o Int e fazer o getString lá dentro. (receber o menuItem por parâmetro) @StringRes
-// Criar style de todos os textos exbidos. Inclusive o da outra tela. Criar style pro edit text que vai ser style.(X)
+// val list = arrayOf(" ") aparece um ponto
+// val list = arrayOf("123", " ", "456")
 // ViewModel -> replicar o comportamente dos clicks. TBM do click do menuItem.(X)
 // disable do botão no ViewModel, criando val isEnabled = MutableLiveData(false) ... isEnabled.value = true (X)
 class PixFragment : BaseFragment<FragmentPixBinding>(
     R.layout.fragment_pix
 ) {
+
+    private var isDialogOpen = false
 
     private val _pixViewModel: PixViewModel by viewModels()
 
@@ -58,20 +58,21 @@ class PixFragment : BaseFragment<FragmentPixBinding>(
     }
 
     private fun setupInfoButton(menu: MenuItem) {
-        menu.isEnabled = false
-        val list = arrayOf(
-            ""
-        )
+        if (isDialogOpen) return
+
+        isDialogOpen = true
+
+        val list = emptyArray<String>()
+
         showAlertDialog(
-            getString(R.string.duvida),
-            getString(R.string.duvida_dialog),
-            getString(R.string.sim),
+            R.string.duvida,
+            R.string.duvida_dialog,
+            R.string.sim,
             { navTo(PixFragmentDirections.actionPixFragmentToInfoFragment(list)) },
-            getString(R.string.nao),
-            { menu.isEnabled = true },
+            R.string.nao,
+            { isDialogOpen = false },
             true
         )
-        menu.isEnabled = true
     }
 
     private fun FragmentPixBinding.setupToqueButton() {
@@ -110,11 +111,6 @@ class PixFragment : BaseFragment<FragmentPixBinding>(
                 showSnack()
                 _pixViewModel.doneSnackBar()
             }
-        }
-
-        _pixViewModel.buttonDisable.observe(viewLifecycleOwner) {
-            binding.nextButton.isEnabled = it
-
         }
     }
 

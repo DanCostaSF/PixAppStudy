@@ -12,24 +12,24 @@ fun Fragment.navBack() = findNavController().navigateUp()
 fun Fragment.navTo(directions: NavDirections) = findNavController().navigate(directions)
 
 fun Fragment.showAlertDialog(
-//    @StringRes
-    title: String? = null,
-//    @StringRes
-    message: String? = null,
-//    @StringRes
-    positiveButtonLabel: String? = null,
+    @StringRes title: Int,
+    @StringRes message: Int?,
+    @StringRes positiveButtonLabel: Int,
     positiveButtonClickListener: () -> Unit = {},
-    negativeButtonLabel: String? = null,
-    negativeButtonClickListener: () -> Unit = {},
+    @StringRes negativeButtonLabel: Int,
+    onDismiss: () -> Unit = {},
     cancelable: Boolean = true
 ) {
     MaterialAlertDialogBuilder(requireContext())
         .setTitle(title)
-        .setMessage(message)
         .setPositiveButton(positiveButtonLabel) { dialog, _ -> dialog.dismiss(); positiveButtonClickListener() }
-        .setNegativeButton(negativeButtonLabel) { dialog, _ -> dialog.dismiss(); negativeButtonClickListener() }
+        .setNegativeButton(negativeButtonLabel, null)
         .setCancelable(cancelable)
-        .create().also { it.show() }
+        .setOnDismissListener { onDismiss() }
+        .create().apply {
+            message?.let { setMessage(getString(it)) }
+            show()
+        }
 }
 
 @BindingAdapter("isVisible")

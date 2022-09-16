@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="vm"
             type="br.com.android.exemplopix.PixViewModel" />
@@ -25,8 +26,8 @@
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
-                android:layout_width="match_parent"
                 style="@style/MaterialToolbarPix"
+                android:layout_width="match_parent"
                 app:navigationOnClickListener="@{() -> vm.onNavigationClick()}" />
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -50,14 +51,15 @@
                     android:id="@+id/click_money_show"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
                     <TextView
                         android:id="@+id/txtv_saldo_limite"
+                        style="@style/TextViewSaldoLimite"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        style="@style/TextViewSaldoLimite"
                         app:layout_constraintEnd_toStartOf="@id/txtv_toque_vizualizar"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
@@ -65,19 +67,19 @@
 
                     <TextView
                         android:id="@+id/txt_valor"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         style="@style/TextViewPixTxtValor"
                         isVisible="@{() -> vm.onTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
                         android:id="@+id/txtv_toque_vizualizar"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
                         style="@style/TextViewPixToqueVizu"
                         isVisible="@{() -> vm.onTextView"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toEndOf="@+id/txtv_saldo_limite"
@@ -104,22 +106,23 @@
 
                     <EditText
                         android:id="@+id/editText"
+                        style="@style/EditTextPix"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        style="@style/EditTextPix"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/txtv_valor_transferencia" />
 
                     <Button
                         android:id="@+id/next_button"
-                        android:layout_width="match_parent"
                         style="@style/ButtonPixFragment"
+                        android:layout_width="match_parent"
+                        android:enabled="@{vm.isButtonEnabled}"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/editText"
-                        app:layout_constraintVertical_bias="1.0"/>
+                        app:layout_constraintVertical_bias="1.0" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

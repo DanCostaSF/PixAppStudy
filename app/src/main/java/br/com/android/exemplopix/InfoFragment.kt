@@ -33,7 +33,7 @@ class InfoFragment : Fragment() {
             it.isNotEmpty()
         }
 
-        val lista = if(list2.isNullOrEmpty()) {
+        val lista = if (list2.isNullOrEmpty()) {
             "Nenhum parâmetro para listar"
         } else {
             list2.joinToString(separator = ", ") {
@@ -59,12 +59,12 @@ class InfoFragment : Fragment() {
     private fun setupBackButton() {
         binding.toolbar.isEnabled = false
         showAlertDialog(
-            getString(R.string.dialog_info),
+            R.string.dialog_info,
             null,
-            getString(R.string.sim),
+            R.string.sim,
             { navBack() },
-            getString(R.string.nao),
-            {  },
+            R.string.nao,
+            { },
             true
         )
     }

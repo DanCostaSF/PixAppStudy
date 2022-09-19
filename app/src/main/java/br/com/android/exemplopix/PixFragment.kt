@@ -14,10 +14,10 @@ import br.com.android.exemplopix.databinding.FragmentPixBinding
 import com.google.android.material.snackbar.Snackbar
 import java.util.*
 
-// arrayOf("  ", "  ") -> Lista deixa um ponto na tela. Remover espaços em uma String Kotlin. E ainda apenas um filter e apenas uma lista.
-// Cria um novo campo de texto, com label "Digite aqui a frase", e que receba um texto qualquer.
-// Embaixo do campo de texto, coloque um TextView que tenha o valor.
-// 0 Fragment! kkk Two way data binding.
+// arrayOf("  ", "  ") -> Lista deixa um ponto na tela. Remover espaços em uma String Kotlin. E ainda apenas um filter e apenas uma lista.(X)
+// Cria um novo campo de texto, com label "Digite aqui a frase", e que receba um texto qualquer.(X)
+// Embaixo do campo de texto, coloque um TextView que tenha o valor.(X)
+// 0 Fragment! kkk Two way data binding.(X)
 
 // " - Texto complementar"
 
@@ -62,9 +62,7 @@ class PixFragment : BaseFragment<FragmentPixBinding>(
 
     private fun FragmentPixBinding.setupToolbar() {
         toolbar.setOnMenuItemClickListener { menuItem ->
-            if (menuItem.itemId == R.id.info_button) {
-                setupInfoButton()
-            }
+            _pixViewModel.onMenuClick(menuItem)
             true
         }
     }
@@ -74,7 +72,8 @@ class PixFragment : BaseFragment<FragmentPixBinding>(
 
         isDialogOpen = true
 
-        val list = arrayOf("   ")
+        val list = arrayOf("    ",
+                            "Me da um chicletão", "boa noit bruno", "      ", "", "")
 
         showAlertDialog(
             R.string.duvida,
@@ -114,6 +113,14 @@ class PixFragment : BaseFragment<FragmentPixBinding>(
                 showSnack()
                 _pixViewModel.doneSnackBar()
             }
+        }
+
+        _pixViewModel.menuClick.observe(viewLifecycleOwner) {
+            if (it == true) {
+                setupInfoButton()
+                _pixViewModel.doneMenuClick()
+            }
+
         }
     }
 

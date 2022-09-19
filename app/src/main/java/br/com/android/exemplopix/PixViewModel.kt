@@ -1,20 +1,31 @@
 package br.com.android.exemplopix
 
 
+import android.view.MenuItem
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class PixViewModel : ViewModel() {
 
     val onNavigateBack = MutableLiveData(false)
-
     var snackBar = MutableLiveData(false)
     var isButtonEnabled = MutableLiveData(false)
-
     val onTextView = MutableLiveData(true)
     val onTextView2 = MutableLiveData(false)
+    val menuClick = MutableLiveData(false)
+
     fun onNavigationClick() {
         onNavigateBack.value = true
+    }
+
+    fun onMenuClick(menu: MenuItem) {
+        if (menu.itemId == R.id.info_button) {
+            menuClick.postValue(true)
+        }
+    }
+
+    fun doneMenuClick() {
+        menuClick.postValue(false)
     }
 
     fun onButtonDisable(value: String) {

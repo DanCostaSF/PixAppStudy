@@ -27,7 +27,7 @@
                 android:id="@+id/toolbar"
                 style="@style/MaterialToolbarPix"
                 android:layout_width="match_parent"
-                app:navigationOnClickListener="@{(item) -> vm.onNavigationClick(item)}" />
+                app:navigationOnClickListener="@{() -> vm.onNavigationClick()}" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -106,6 +106,9 @@
                     <EditText
                         android:id="@+id/editText"
                         style="@style/EditTextPix"
+                        android:text="@string/r_0_00"
+                        android:maxLength="12"
+                        android:inputType="numberDecimal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:layout_constraintEnd_toEndOf="parent"

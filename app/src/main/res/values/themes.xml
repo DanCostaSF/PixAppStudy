@@ -37,11 +37,9 @@
         <item name="android:layout_marginStart">@dimen/margin_layout_pix</item>
         <item name="android:layout_marginTop">@dimen/margin10dp</item>
         <item name="android:layout_marginEnd">@dimen/margin_layout_pix</item>
-        <item name="android:text">@string/r_0_00</item>
         <item name="android:textColor">@color/black</item>
         <item name="minHeight">@dimen/min_heigh_et</item>
-        <item name="android:maxLength">12</item>
-        <item name="android:inputType">numberDecimal</item>
+
     </style>
 
     <style name="TextViewPixToqueVizu" parent="Theme.MaterialComponents.Light.NoActionBar">

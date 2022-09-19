@@ -17,6 +17,8 @@ class InfoFragment : Fragment() {
 
     private val args: InfoFragmentArgs by navArgs()
 
+    private var isDialogOpen = false
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -33,18 +35,16 @@ class InfoFragment : Fragment() {
             it.isNotEmpty()
         }
 
-        val lista = if (list2.isNullOrEmpty()) {
-            "Nenhum parâmetro para listar"
-        } else {
-            list2.joinToString(separator = ", ") {
+        val lista = list2?.joinToString(separator = ", ") {
                 it
             }
+
+        binding.textView.text = if (list2.isNullOrEmpty() || list2.contains(" ") || list2.contains("  "))  {
+            "Nenhum parâmetro para listar."
+        } else {
+            "$lista."
         }
 
-
-        binding.textView.text = "$lista."
-
-//        Log.i("teste", lista.toString())
         binding.apply {
             setupNavigationListener()
         }
@@ -57,14 +57,17 @@ class InfoFragment : Fragment() {
     }
 
     private fun setupBackButton() {
-        binding.toolbar.isEnabled = false
+        if (isDialogOpen) return
+
+        isDialogOpen = true
+
         showAlertDialog(
             R.string.dialog_info,
             null,
             R.string.sim,
             { navBack() },
             R.string.nao,
-            { },
+            { isDialogOpen = false },
             true
         )
     }

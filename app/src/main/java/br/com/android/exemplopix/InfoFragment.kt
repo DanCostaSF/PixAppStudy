@@ -30,23 +30,35 @@ class InfoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val list = args.nomes?.toMutableList()
-        val list2 = list?.filter {
-            it.isNotEmpty()
-        }
-
-        val lista = list2?.joinToString(separator = ", ") {
-                it
-            }
-
-        binding.textView.text = if (list2.isNullOrEmpty() || list2.contains(" ") || list2.contains("  "))  {
-            "Nenhum parâmetro para listar."
-        } else {
-            "$lista."
-        }
+        setupList()
 
         binding.apply {
             setupNavigationListener()
+        }
+    }
+
+    private fun setupList() {
+        val list = args.nomes?.toMutableList()
+        val list2 = list?.filter {
+            it.isNotEmpty()
+        }?.toList()
+
+        val list3 = list2?.filter {
+            it != " "
+        }
+
+        val list4 = list3?.filter {
+            it != "  "
+        }
+
+        val lista = list4?.joinToString(separator = ", ") {
+            it
+        }
+
+        binding.textView.text = if (list2.isNullOrEmpty()) {
+            "Nenhum parâmetro para listar."
+        } else {
+            "$lista."
         }
     }
 

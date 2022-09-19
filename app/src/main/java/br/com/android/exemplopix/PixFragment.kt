@@ -1,16 +1,20 @@
 package br.com.android.exemplopix
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
+import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import br.com.android.exemplopix.commons.*
 import br.com.android.exemplopix.commons.MaskMoney.Companion.numero
 import br.com.android.exemplopix.databinding.FragmentPixBinding
 import com.google.android.material.snackbar.Snackbar
 import java.util.*
 
-// val list = arrayOf(" ") aparece um ponto
+// val list = arrayOf(" ") aparece um ponto(X)
 // val list = arrayOf("123", " ", "456")
 // ViewModel -> replicar o comportamente dos clicks. TBM do click do menuItem.(X)
 // disable do botão no ViewModel, criando val isEnabled = MutableLiveData(false) ... isEnabled.value = true (X)
@@ -31,6 +35,14 @@ class PixFragment : BaseFragment<FragmentPixBinding>(
             setupToolbar()
             setupNextButton()
             setupToqueButton()
+            setupContentShow()
+        }
+    }
+
+    private fun FragmentPixBinding.setupContentShow() {
+        clickMoneyShow.setOnClickListener {
+            _pixViewModel.onTextViewVisibility2()
+            _pixViewModel.onTextViewVisibility()
         }
     }
 
@@ -47,18 +59,19 @@ class PixFragment : BaseFragment<FragmentPixBinding>(
     private fun FragmentPixBinding.setupToolbar() {
         toolbar.setOnMenuItemClickListener { menuItem ->
             if (menuItem.itemId == R.id.info_button) {
-                setupInfoButton(menuItem)
+                setupInfoButton()
             }
             true
         }
     }
 
-    private fun setupInfoButton(menu: MenuItem) {
+    private fun setupInfoButton() {
         if (isDialogOpen) return
 
         isDialogOpen = true
 
-        val list = emptyArray<String>()
+        val list = arrayOf("  ",
+        "teste", "alo")
 
         showAlertDialog(
             R.string.duvida,
@@ -73,7 +86,8 @@ class PixFragment : BaseFragment<FragmentPixBinding>(
 
     private fun FragmentPixBinding.setupToqueButton() {
         clickMoneyShow.setOnClickListener {
-            _pixViewModel.onBalanceContainerClick()
+            _pixViewModel.onTextViewVisibility()
+            _pixViewModel.onTextViewVisibility2()
         }
     }
 

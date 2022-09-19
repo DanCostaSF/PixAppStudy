@@ -8,7 +8,10 @@ class InfoViewModel : ViewModel() {
     val textViewInfo = MutableLiveData("")
 
     fun textViewSetup(text: String) {
-
-        textViewInfo.postValue("Texto complementar - $text")
+        if(text.isEmpty()) {
+            textViewInfo.postValue("")
+        }else {
+            textViewInfo.postValue("Texto complementar - $text")
+        }
     }
 }

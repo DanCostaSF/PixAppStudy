@@ -10,7 +10,7 @@ import br.com.android.exemplopix.databinding.FragmentPixBinding
 import com.google.android.material.snackbar.Snackbar
 import java.util.*
 
-// val list = arrayOf(" ") aparece um ponto
+// val list = arrayOf(" ") aparece um ponto(X)
 // val list = arrayOf("123", " ", "456")
 // ViewModel -> replicar o comportamente dos clicks. TBM do click do menuItem.(X)
 // disable do botão no ViewModel, criando val isEnabled = MutableLiveData(false) ... isEnabled.value = true (X)

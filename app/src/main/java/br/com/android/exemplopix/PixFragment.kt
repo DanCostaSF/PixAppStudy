@@ -14,10 +14,14 @@ import br.com.android.exemplopix.databinding.FragmentPixBinding
 import com.google.android.material.snackbar.Snackbar
 import java.util.*
 
-// val list = arrayOf(" ") aparece um ponto(X)
-// val list = arrayOf("123", " ", "456")
-// ViewModel -> replicar o comportamente dos clicks. TBM do click do menuItem.(X)
-// disable do botão no ViewModel, criando val isEnabled = MutableLiveData(false) ... isEnabled.value = true (X)
+// arrayOf("  ", "  ") -> Lista deixa um ponto na tela. Remover espaços em uma String Kotlin. E ainda apenas um filter e apenas uma lista.
+// Cria um novo campo de texto, com label "Digite aqui a frase", e que receba um texto qualquer.
+// Embaixo do campo de texto, coloque um TextView que tenha o valor.
+// 0 Fragment! kkk Two way data binding.
+
+// " - Texto complementar"
+
+// Click do info icon na viewModel
 class PixFragment : BaseFragment<FragmentPixBinding>(
     R.layout.fragment_pix
 ) {
@@ -70,8 +74,7 @@ class PixFragment : BaseFragment<FragmentPixBinding>(
 
         isDialogOpen = true
 
-        val list = arrayOf("  ",
-        "teste", "alo")
+        val list = arrayOf("   ")
 
         showAlertDialog(
             R.string.duvida,

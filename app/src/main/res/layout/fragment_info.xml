@@ -44,6 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/EditTextPix"
+            android:text="@={vm.text}"
             android:hint="@string/digite_aqui_um_texto_qualquer"
             android:inputType="text"
             app:layout_constraintTop_toBottomOf="@id/textView" />
@@ -53,7 +54,7 @@
             android:id="@+id/textViewLogic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text= "@{vm.textViewInfo}"
+            android:text= "@{vm.text}"
             style="@style/TextViewInfo"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"

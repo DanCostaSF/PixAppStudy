@@ -36,16 +36,13 @@ class PixFragment : BaseFragment<FragmentPixBinding>(
         editTextSetup()
 
         binding.apply {
-            setupToolbar()
             setupNextButton()
-            setupToqueButton()
             setupContentShow()
         }
     }
 
     private fun FragmentPixBinding.setupContentShow() {
         clickMoneyShow.setOnClickListener {
-            _pixViewModel.onTextViewVisibility2()
             _pixViewModel.onTextViewVisibility()
         }
     }
@@ -58,13 +55,6 @@ class PixFragment : BaseFragment<FragmentPixBinding>(
                 _pixViewModel.onButtonDisable(value)
             }
         )
-    }
-
-    private fun FragmentPixBinding.setupToolbar() {
-        toolbar.setOnMenuItemClickListener { menuItem ->
-            _pixViewModel.onMenuClick(menuItem)
-            true
-        }
     }
 
     private fun setupInfoButton() {
@@ -84,13 +74,6 @@ class PixFragment : BaseFragment<FragmentPixBinding>(
             { isDialogOpen = false },
             true
         )
-    }
-
-    private fun FragmentPixBinding.setupToqueButton() {
-        clickMoneyShow.setOnClickListener {
-            _pixViewModel.onTextViewVisibility()
-            _pixViewModel.onTextViewVisibility2()
-        }
     }
 
     private fun FragmentPixBinding.setupNextButton() {
@@ -115,13 +98,13 @@ class PixFragment : BaseFragment<FragmentPixBinding>(
             }
         }
 
-        _pixViewModel.menuClick.observe(viewLifecycleOwner) {
+        _pixViewModel.alertDialog.observe(viewLifecycleOwner) {
             if (it == true) {
                 setupInfoButton()
-                _pixViewModel.doneMenuClick()
+                _pixViewModel.doneInfoButtonClick()
             }
-
         }
+
     }
 
     private fun showSnack() {

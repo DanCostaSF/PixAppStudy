@@ -12,20 +12,10 @@ class PixViewModel : ViewModel() {
     var isButtonEnabled = MutableLiveData(false)
     val onTextView = MutableLiveData(true)
     val onTextView2 = MutableLiveData(false)
-    val menuClick = MutableLiveData(false)
+    val alertDialog = MutableLiveData(false)
 
     fun onNavigationClick() {
         onNavigateBack.value = true
-    }
-
-    fun onMenuClick(menu: MenuItem) {
-        if (menu.itemId == R.id.info_button) {
-            menuClick.postValue(true)
-        }
-    }
-
-    fun doneMenuClick() {
-        menuClick.postValue(false)
     }
 
     fun onButtonDisable(value: String) {
@@ -42,14 +32,23 @@ class PixViewModel : ViewModel() {
         } else {
             onTextView.postValue(false)
         }
-    }
 
-    fun onTextViewVisibility2() {
         if(onTextView2.value == false) {
             onTextView2.postValue(true)
         } else {
             onTextView2.postValue(false)
         }
+    }
+
+    fun onMenuItemClick(item: MenuItem) : Boolean {
+        if (item.itemId == R.id.info_button) {
+            alertDialog.postValue(true)
+        }
+        return false
+    }
+
+    fun doneInfoButtonClick() {
+        alertDialog.postValue(false)
     }
 
     fun showSnackBar() {

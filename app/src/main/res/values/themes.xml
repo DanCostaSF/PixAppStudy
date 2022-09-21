@@ -78,7 +78,6 @@
     </style>
 
     <style name="TextViewInfo" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="android:text">@string/voc_chegou_no_fragment_d_vidas</item>
         <item name="android:textSize">@dimen/size16</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>

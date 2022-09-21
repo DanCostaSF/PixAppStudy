@@ -2,16 +2,14 @@ package br.com.android.exemplopix
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.map
 
 class InfoViewModel : ViewModel() {
 
-    val textViewInfo = MutableLiveData("")
+    val typedText = MutableLiveData("")
 
-    fun textViewSetup(text: String) {
-        if(text.isEmpty()) {
-            textViewInfo.postValue("")
-        }else {
-            textViewInfo.postValue("Texto complementar - $text")
-        }
+    val formattedText = typedText.map { typedText ->
+        if (typedText.isNotEmpty()) "$typedText  - Texto complementar" else ""
     }
+
 }

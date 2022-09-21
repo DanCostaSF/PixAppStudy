@@ -14,14 +14,8 @@ import br.com.android.exemplopix.databinding.FragmentPixBinding
 import com.google.android.material.snackbar.Snackbar
 import java.util.*
 
-// arrayOf("  ", "  ") -> Lista deixa um ponto na tela. Remover espaços em uma String Kotlin. E ainda apenas um filter e apenas uma lista.(X)
-// Cria um novo campo de texto, com label "Digite aqui a frase", e que receba um texto qualquer.(X)
-// Embaixo do campo de texto, coloque um TextView que tenha o valor.(X)
-// 0 Fragment! kkk Two way data binding.(X)
-
-// " - Texto complementar"
-
-// Click do info icon na viewModel
+// Quando clicar no botão Próximo, navegar para a nova tela do print que enviei
+// Quando usuario digitar alguma info, validar se é um CPF, CNPJ, celular ou email válido, se for, habilitar o botão (>) que está no canto inferior direito.
 class PixFragment : BaseFragment<FragmentPixBinding>(
     R.layout.fragment_pix
 ) {
@@ -72,8 +66,7 @@ class PixFragment : BaseFragment<FragmentPixBinding>(
 
         isDialogOpen = true
 
-        val list = arrayOf("    ",
-                            "Me da um chicletão", "boa noit bruno", "      ", "", "")
+        val list = arrayOf<String>()
 
         showAlertDialog(
             R.string.duvida,

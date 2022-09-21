@@ -21,35 +21,22 @@ class InfoFragment : BaseFragment<FragmentInfoBinding>(
 
     private var isDialogOpen = false
 
-    private val textWatcher = object : TextWatcher {
-        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-        override fun afterTextChanged(p0: Editable?) {
-            _infoViewModel.textViewSetup(p0.toString())
-        }
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupList()
 
-
         binding.apply {
             setupNavigationListener()
-            editText.addTextChangedListener(textWatcher)
         }
     }
 
     private fun setupList() {
-        val list = args.nomes?.toMutableList()?.map { teste ->
-             teste.replace("\\s+".toRegex(), " ")
-        }?.filter {
-            it.isNotEmpty() && it != " "
-        }?.joinToString(separator = ", ") {
-            it
-        }
+        val list = args.nomes?.toMutableList()
+            ?.filter {
+                it.isNotEmpty() && it != " "
+            }?.joinToString(separator = ", ") {
+                it
+            }
 
         binding.textView.text = if (list.isNullOrEmpty()) {
             "Nenhum parâmetro para listar."

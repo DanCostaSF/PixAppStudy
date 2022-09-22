@@ -38,5 +38,4 @@ class TransferAdapter : RecyclerView.Adapter<TransferAdapter.TransferViewHolder>
     }
 
     override fun getItemCount() = data.size
-
 }

@@ -97,7 +97,6 @@ class PixFragment : BaseFragment<FragmentPixBinding>(
                 _pixViewModel.doneInfoButtonClick()
             }
         }
-
     }
 
     private fun showSnack() {

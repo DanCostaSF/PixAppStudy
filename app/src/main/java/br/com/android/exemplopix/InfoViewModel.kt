@@ -7,13 +7,13 @@ import androidx.lifecycle.viewModelScope
 
 class InfoViewModel : ViewModel() {
 
-    val textViewInfo = MutableLiveData("")
-
     val onNavigateBack = MutableLiveData(false)
 
     fun onNavigationClick() {
         onNavigateBack.value = true
     }
+
+    val textViewInfo = MutableLiveData("")
 
     val text = textViewInfo.map {
         if (it.isEmpty()) {
@@ -22,6 +22,5 @@ class InfoViewModel : ViewModel() {
             "Texto complementar - $it"
         }
     }
-
 }
 

@@ -34,5 +34,4 @@ abstract class BaseFragment<T : ViewDataBinding>(
     abstract fun setupViewModel()
 
     abstract fun setupObservers()
-
 }

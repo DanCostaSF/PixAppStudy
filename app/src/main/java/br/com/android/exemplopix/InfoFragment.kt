@@ -24,11 +24,6 @@ class InfoFragment : BaseFragment<FragmentInfoBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupList()
-
-
-        binding.apply {
-            setupNavigationListener()
-        }
     }
 
     private fun setupList() {
@@ -44,12 +39,6 @@ class InfoFragment : BaseFragment<FragmentInfoBinding>(
             "Nenhum parâmetro para listar."
         } else {
             "$list."
-        }
-    }
-
-    private fun FragmentInfoBinding.setupNavigationListener() {
-        toolbar.setNavigationOnClickListener {
-            setupBackButton()
         }
     }
 
@@ -74,6 +63,8 @@ class InfoFragment : BaseFragment<FragmentInfoBinding>(
     }
 
     override fun setupObservers() {
-
+        _infoViewModel.onNavigateBack.observe(viewLifecycleOwner) { mustNavigate ->
+            if (mustNavigate) setupBackButton()
+        }
     }
 }

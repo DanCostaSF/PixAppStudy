@@ -11,4 +11,5 @@
     <color name="cor_pix_letra">#A7C6BA</color>
     <color name="icons_color">#F2F2F2</color>
     <color name="textvalor_color">#347A5F</color>
+    <color name="hint_edittext">#C8B9B9</color>
 </resources>

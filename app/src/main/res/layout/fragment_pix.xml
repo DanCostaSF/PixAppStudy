@@ -99,6 +99,7 @@
                     <TextView
                         android:id="@+id/txtv_valor_transferencia"
                         style="@style/TextViewPixValorTransf"
+                        android:text="@string/txtv_valor_transferencia"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:layout_constraintStart_toStartOf="parent"

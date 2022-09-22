@@ -18,4 +18,13 @@
     <string name="dialog_info">"Você deseja mesmo sair?"</string>
     <string name="duvidas">Dúvidas?</string>
     <string name="digite_aqui_um_texto_qualquer">Digite aqui um texto qualquer!</string>
+    <string name="transferir">Transferir</string>
+    <string name="digite_a_chave_do_recebedor">Digite a chave do \nrecebedor</string>
+    <string name="chave_pix">Chave Pix</string>
+    <string name="edittext_chavepix">CPF/CNPJ, Celular, E-mail ou Chave Aleatória</string>
+    <string name="pix_manual">Pix manual</string>
+    <string name="pixmanualtext">Realize transferência Pix utilizando banco,\nagência, conta e dados do recebedor</string>
+    <string name="favoritos">Favoritos</string>
+    <string name="buscar">Buscar</string>
+    <string name="nome_do_usuario">Nome do usuario</string>
 </resources>

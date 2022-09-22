@@ -28,7 +28,6 @@
     <style name="TextViewPixValorTransf" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:layout_marginStart">@dimen/margin_layout_pix</item>
         <item name="android:layout_marginTop">@dimen/margin_top_pix</item>
-        <item name="android:text">@string/txtv_valor_transferencia</item>
         <item name="android:textColor">@color/textvalor_color</item>
         <item name="android:textSize">@dimen/text_view_valor_transf</item>
     </style>
@@ -78,7 +77,6 @@
     </style>
 
     <style name="TextViewInfo" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="android:text">@string/voc_chegou_no_fragment_d_vidas</item>
         <item name="android:textSize">@dimen/size16</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
@@ -87,7 +85,6 @@
     <style name="MaterialToolbarInfo" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="navigationIcon">@drawable/ic_back_24</item>
         <item name="android:layout_height">?attr/actionBarSize</item>
-        <item name="title">@string/duvida</item>
         <item name="titleCentered">true</item>
         <item name="titleTextColor">@color/white</item>
     </style>

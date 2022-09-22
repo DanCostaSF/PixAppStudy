@@ -6,12 +6,11 @@ import androidx.lifecycle.ViewModel
 class TransferViewModel : ViewModel() {
 
     val onNavigateBack = MutableLiveData(false)
-
-    val contacts = MutableLiveData<List<ContactsPixModel>>()
-
     fun onNavigationClick() {
         onNavigateBack.value = true
     }
+
+    val contacts = MutableLiveData<List<ContactsPixModel>>()
 
     fun setData() {
         val alice = ContactsPixModel(

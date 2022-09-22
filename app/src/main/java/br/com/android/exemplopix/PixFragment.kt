@@ -14,8 +14,6 @@ import br.com.android.exemplopix.databinding.FragmentPixBinding
 import com.google.android.material.snackbar.Snackbar
 import java.util.*
 
-// Quando clicar no botão Próximo, navegar para a nova tela do print que enviei
-// Quando usuario digitar alguma info, validar se é um CPF, CNPJ, celular ou email válido, se for, habilitar o botão (>) que está no canto inferior direito.
 class PixFragment : BaseFragment<FragmentPixBinding>(
     R.layout.fragment_pix
 ) {

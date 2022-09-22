@@ -25,6 +25,7 @@
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
+                app:navigationOnClickListener="@{() -> vm.onNavigationClick()}"
                 style="@style/MaterialToolbarInfo" />
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -44,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/EditTextPix"
-            android:text="@={vm.text}"
+            android:text="@={vm.textViewInfo}"
             android:hint="@string/digite_aqui_um_texto_qualquer"
             android:inputType="text"
             app:layout_constraintTop_toBottomOf="@id/textView" />

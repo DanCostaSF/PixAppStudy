@@ -180,7 +180,8 @@
                 android:layout_marginBottom="@dimen/margin_toolbar_pix"
                 android:layout_marginEnd="@dimen/margin_toolbar_pix"
                 android:src="@drawable/ic_next_24"
-                android:enabled="@{vm.isEnabled}"/>
+                android:enabled="@{vm.isEnabled()}"
+                />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

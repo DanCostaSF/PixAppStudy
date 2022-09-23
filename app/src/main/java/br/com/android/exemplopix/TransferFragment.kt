@@ -7,12 +7,10 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import br.com.android.exemplopix.commons.BaseFragment
 import br.com.android.exemplopix.commons.observeAndNavigateBack
 import br.com.android.exemplopix.commons.showSnackBar
-import br.com.android.exemplopix.databinding.CustomBottomSheetBinding
 import br.com.android.exemplopix.databinding.FragmentTransferBinding
-import com.google.android.material.bottomsheet.BottomSheetDialog
 
 // BottomSheet que ocupe 90% da tela da tela. Que tenha um botão X no canto superior direito.(X)
-// Colocar um titulo, um subtitulo, e uma igual dessa tela a da tela Transfer
+// Colocar um titulo, um subtitulo, e uma lista igual dessa tela a da tela Transfer(X)
 
 class TransferFragment : BaseFragment<FragmentTransferBinding>(
     R.layout.fragment_transfer
@@ -30,16 +28,8 @@ class TransferFragment : BaseFragment<FragmentTransferBinding>(
     }
 
     private fun showBottomSheetDialog() {
-        val dialog = BottomSheetDialog(requireContext(), R.style.BottomSheetDialog)
-
-        val sheetBinding: CustomBottomSheetBinding =
-            CustomBottomSheetBinding.inflate(layoutInflater, null, false)
-
-        sheetBinding.closeButton.setOnClickListener {
-            dialog.dismiss()
-        }
-        dialog.setContentView(sheetBinding.root)
-        dialog.show()
+        val botSheet = BottomSheetTransferFragment()
+        botSheet.show(requireActivity().supportFragmentManager, "BottomSheetDialog")
     }
 
     private fun setupRecycler() {
@@ -63,7 +53,7 @@ class TransferFragment : BaseFragment<FragmentTransferBinding>(
     override fun setupObservers() {
         observeAndNavigateBack(_transferViewModel.onNavigateBack)
 
-        _transferViewModel.snackBarString.observe(viewLifecycleOwner) { text ->
+        _transferViewModel.snackBarInsertString.observe(viewLifecycleOwner) { text ->
             binding.fab.setOnClickListener {
                 it.showSnackBar(text)
             }

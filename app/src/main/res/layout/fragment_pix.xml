@@ -27,8 +27,8 @@
                 android:id="@+id/toolbar"
                 style="@style/MaterialToolbarPix"
                 android:layout_width="match_parent"
-                app:onMenuItemClickListener="@{(item) -> vm.onMenuItemClick(item)}"
-                app:navigationOnClickListener="@{() -> vm.onNavigationClick()}" />
+                app:navigationOnClickListener="@{() -> vm.onNavigationClick()}"
+                app:onMenuItemClickListener="@{(item) -> vm.onMenuItemClick(item)}" />
 
         </com.google.android.material.appbar.AppBarLayout>
 

@@ -27,4 +27,5 @@
     <string name="favoritos">Favoritos</string>
     <string name="buscar">Buscar</string>
     <string name="nome_do_usuario">Nome do usuario</string>
+    <string name="close">close</string>
 </resources>

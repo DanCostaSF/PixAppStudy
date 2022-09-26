@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import br.com.android.exemplopix.commons.BaseFragment
+import br.com.android.exemplopix.commons.navTo
 import br.com.android.exemplopix.commons.observeAndNavigateBack
 import br.com.android.exemplopix.commons.showSnackBar
 import br.com.android.exemplopix.databinding.FragmentTransferBinding
@@ -23,14 +24,16 @@ class TransferFragment : BaseFragment<FragmentTransferBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecycler()
-
-        binding.pixManual.setOnClickListener { showBottomSheetDialog() }
+        binding.pixManual.setOnClickListener {
+            navTo(TransferFragmentDirections.actionTransferFragmentToPixManualFragment())
+        }
+//        binding.pixManual.setOnClickListener { showBottomSheetDialog() }
     }
 
-    private fun showBottomSheetDialog() {
-        val botSheet = BottomSheetTransferFragment()
-        botSheet.show(requireActivity().supportFragmentManager, "BottomSheetDialog")
-    }
+//    private fun showBottomSheetDialog() {
+//        val botSheet = BottomSheetTransferFragment()
+//        botSheet.show(requireActivity().supportFragmentManager, "BottomSheetDialog")
+//    }
 
     private fun setupRecycler() {
         binding.recycler.run {

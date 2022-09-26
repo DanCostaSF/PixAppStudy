@@ -34,10 +34,9 @@ class TransferViewModel : ViewModel() {
 
     fun isCelularValid(document: String): Boolean {
         if (!document.isDigitsOnly()) return false
-        return document.isPhoneNumber(document)
+        return return false
     }
 
-    fun CharSequence.isPhoneNumber(document: String) : Boolean = Pattern.compile("^\\([1-9]{2}\\) (?:[2-8]|9[1-9])[0-9]{3}\\-[0-9]{4}\$").matcher(document).find()
 
     val isEnabled = validType.map {
         it != ValidType.NON_VALID

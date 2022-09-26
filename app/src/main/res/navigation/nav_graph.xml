@@ -32,5 +32,14 @@
         android:id="@+id/transferFragment"
         android:name="br.com.android.exemplopix.TransferFragment"
         android:label="TransferFragment"
-        tools:layout="@layout/fragment_transfer"/>
+        tools:layout="@layout/fragment_transfer">
+        <action
+            android:id="@+id/action_transferFragment_to_pixManualFragment"
+            app:destination="@id/pixManualFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pixManualFragment"
+        android:name="br.com.android.exemplopix.PixManualFragment"
+        android:label="PixManualFragment"
+        tools:layout="@layout/fragment_pix_manual"/>
 </navigation>

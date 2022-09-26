@@ -12,6 +12,14 @@ import br.com.android.exemplopix.databinding.CustomBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
+
+//        binding.pixManual.setOnClickListener { showBottomSheetDialog() }
+//    private fun showBottomSheetDialog() {
+//        val botSheet = BottomSheetTransferFragment()
+//        botSheet.show(requireActivity().supportFragmentManager, "BottomSheetDialog")
+//    }
+
+
 class BottomSheetTransferFragment : BottomSheetDialogFragment() {
 
     private var _binding: CustomBottomSheetBinding? = null
@@ -19,7 +27,7 @@ class BottomSheetTransferFragment : BottomSheetDialogFragment() {
 
     private val _bottomSheetViewModel: BottomSheetTransferViewModel by viewModels()
 
-    private lateinit var botSheetAdapter : BottomSheetTransferAdapter
+    private lateinit var botSheetAdapter: BottomSheetTransferAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,7 +45,8 @@ class BottomSheetTransferFragment : BottomSheetDialogFragment() {
         setupObservers()
         val bottomSheetBehavior = BottomSheetBehavior.from(view.parent as View)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
-        binding.layout.minHeight = Resources.getSystem().displayMetrics.heightPixels
+        binding.layout.minHeight =
+            (Resources.getSystem().displayMetrics.heightPixels * 0.80).toInt()
 
         setupRecycler()
 

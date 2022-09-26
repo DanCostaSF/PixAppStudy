@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="vm"
             type="br.com.android.exemplopix.PixManualViewModel" />
@@ -113,7 +114,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/white"
-                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
                         android:inputType="date"
                         android:text="@string/_27_11_2021" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -180,9 +183,9 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin10dp"
                     app:endIconDrawable="@drawable/ic_arrow_up_24"
-                    app:endIconMode="custom"
-                    android:layout_marginTop="@dimen/margin10dp">
+                    app:endIconMode="custom">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtTypeConta"
@@ -196,9 +199,9 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin10dp"
                     app:endIconDrawable="@drawable/ic_arrow_up_24"
-                    app:endIconMode="custom"
-                    android:layout_marginTop="@dimen/margin10dp">
+                    app:endIconMode="custom">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtTitularidade"
@@ -254,9 +257,9 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <CheckBox
+                        style="@style/CustomCheckBox"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/CustomCheckBox"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />

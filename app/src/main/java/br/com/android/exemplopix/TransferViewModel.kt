@@ -8,11 +8,9 @@ import androidx.lifecycle.map
 import br.com.android.exemplopix.commons.*
 import java.util.regex.Pattern
 
-// Separar em novas private funs a validação de cpf, cnpj, isValidEmail . Removendo try catch e trabalhabndo com digitsOnly.
-// A função de validaçõa de CPF, CNPJ e EMAIL colocar em uma outra classe. O enum tbm. As funções de formatação tbm, pode por tudo no mesmo arquivo.
-// Criar um novo tipo que é celular. Criar validação se o celular é valido. E criar formatação tbm.
-
-
+// Centralizar mensagem do click do botão.
+// Passar validação do CELULAR pro outro arquivo
+// Quebrar em dois arquivos as validações em um arquivo e formatações em outro aqui.
 class TransferViewModel : ViewModel() {
 
     val onNavigateBack = MutableLiveData(false)
@@ -27,14 +25,9 @@ class TransferViewModel : ViewModel() {
             isCpfValid(it) -> ValidType.CPF
             isCnpjValid(it) -> ValidType.CNPJ
             isEmailValid(it) -> ValidType.EMAIL
-            isCelularValid(it) -> ValidType.CELULAR
+//            isCelularValid(it) -> ValidType.CELULAR // Criar aqui...
             else -> ValidType.NON_VALID
         }
-    }
-
-    fun isCelularValid(document: String): Boolean {
-        if (!document.isDigitsOnly()) return false
-        return return false
     }
 
 
@@ -58,7 +51,7 @@ class TransferViewModel : ViewModel() {
                 celular.substring(2, 7) + "-" +
                 celular.substring(7, 11)
 
-        return "TIPO: CNPJ - VALOR: $cellFormated"
+        return "TIPO: CELULAR - VALOR: $cellFormated"
     }
 
 

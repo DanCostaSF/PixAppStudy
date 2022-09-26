@@ -10,9 +10,7 @@ import br.com.android.exemplopix.commons.observeAndNavigateBack
 import br.com.android.exemplopix.commons.showSnackBar
 import br.com.android.exemplopix.databinding.FragmentTransferBinding
 
-// BottomSheet que ocupe 90% da tela da tela. Que tenha um botão X no canto superior direito.(X)
-// Colocar um titulo, um subtitulo, e uma lista igual dessa tela a da tela Transfer(X)
-
+// Colocar o scroll na tela toda. NestedScrollView pq existe um recycler. Layout behaviour.
 class TransferFragment : BaseFragment<FragmentTransferBinding>(
     R.layout.fragment_transfer
 ) {
@@ -27,13 +25,8 @@ class TransferFragment : BaseFragment<FragmentTransferBinding>(
         binding.pixManual.setOnClickListener {
             navTo(TransferFragmentDirections.actionTransferFragmentToPixManualFragment())
         }
-//        binding.pixManual.setOnClickListener { showBottomSheetDialog() }
-    }
 
-//    private fun showBottomSheetDialog() {
-//        val botSheet = BottomSheetTransferFragment()
-//        botSheet.show(requireActivity().supportFragmentManager, "BottomSheetDialog")
-//    }
+    }
 
     private fun setupRecycler() {
         binding.recycler.run {

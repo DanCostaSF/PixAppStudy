@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="vm"
             type="br.com.android.exemplopix.PixManualViewModel" />
@@ -16,8 +15,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@color/background">
+            android:background="@color/background"
+            android:orientation="vertical">
 
             <com.google.android.material.appbar.AppBarLayout
                 android:id="@+id/appBarLayout"
@@ -32,7 +31,7 @@
                     android:id="@+id/toolbar"
                     style="@style/MaterialToolbarPix"
                     android:layout_width="match_parent"
-                    app:navigationOnClickListener="@{() -> vm.onNavigationClick()}"/>
+                    app:navigationOnClickListener="@{() -> vm.onNavigationClick()}" />
 
             </com.google.android.material.appbar.AppBarLayout>
 
@@ -106,17 +105,17 @@
                     android:id="@+id/edtLayoutData"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:endIconMode="custom"
-                    app:endIconDrawable="@drawable/ic_calendar_24">
+                    app:endIconDrawable="@drawable/ic_calendar_24"
+                    app:endIconMode="custom">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtData"
-                    android:clickable="false"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/white"
-                    android:inputType="date"
-                    android:text="@string/_27_11_2021" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtData"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/white"
+                        android:clickable="false"
+                        android:inputType="date"
+                        android:text="@string/_27_11_2021" />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -137,9 +136,9 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:endIconMode="custom"
+                    android:layout_marginTop="@dimen/margin10dp"
                     app:endIconDrawable="@drawable/ic_arrow_up_24"
-                    android:layout_marginTop="@dimen/margin10dp">
+                    app:endIconMode="custom">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtInstFinanceiro"
@@ -181,6 +180,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:endIconDrawable="@drawable/ic_arrow_up_24"
+                    app:endIconMode="custom"
                     android:layout_marginTop="@dimen/margin10dp">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -188,7 +189,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/white"
-                        android:drawableEnd="@drawable/ic_arrow_up_24"
                         android:hint="@string/tipo_de_conta"
                         android:text="@string/conta_corrente" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -196,6 +196,8 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:endIconDrawable="@drawable/ic_arrow_up_24"
+                    app:endIconMode="custom"
                     android:layout_marginTop="@dimen/margin10dp">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -203,7 +205,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/white"
-                        android:drawableEnd="@drawable/ic_arrow_up_24"
                         android:hint="@string/titularidade"
                         android:text="@string/diferente_titularidade" />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -255,6 +256,7 @@
                     <CheckBox
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        style="@style/CustomCheckBox"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />

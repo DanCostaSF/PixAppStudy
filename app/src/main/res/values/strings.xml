@@ -48,4 +48,12 @@
     <string name="diferente_titularidade">Diferente titularidade</string>
     <string name="nome_do_benefici_rio">Nome do beneficiário</string>
     <string name="_123_456_789_10">123.456.789-10</string>
+    <string name="nenhum_selecionado">Nenhum selecionado</string>
+    <string name="fechar">Fechar</string>
+    <string name="_260_nubank">260 - Nubank</string>
+    <string name="_270_sicredi">270 - Sicredi</string>
+    <string name="ita">300 - Itaú</string>
+    <string name="poupan_a">Poupança</string>
+    <string name="corrente">Corrente</string>
+    <string name="salario">Salario</string>
 </resources>

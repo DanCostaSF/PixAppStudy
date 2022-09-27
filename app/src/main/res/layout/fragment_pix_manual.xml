@@ -9,32 +9,31 @@
             type="br.com.android.exemplopix.PixManualViewModel" />
     </data>
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/background"
-            android:orientation="vertical">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.appbar.AppBarLayout
-                android:id="@+id/appBarLayout"
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                style="@style/MaterialToolbarPix"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/background"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:navigationOnClickListener="@{() -> vm.onNavigationClick()}" />
+        </com.google.android.material.appbar.AppBarLayout>
 
-                <com.google.android.material.appbar.MaterialToolbar
-                    android:id="@+id/toolbar"
-                    style="@style/MaterialToolbarPix"
-                    android:layout_width="match_parent"
-                    app:navigationOnClickListener="@{() -> vm.onNavigationClick()}" />
-
-            </com.google.android.material.appbar.AppBarLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -48,25 +47,31 @@
                     android:id="@+id/contentShowMoney"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin10dp"
+                    android:paddingTop="@dimen/margin10dp"
                     android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/saldo_limite"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/toolbar_pix_fragment" />
+                        style="@style/TextViewSaldoLimite"/>
 
                     <TextView
+                        android:id="@+id/txtv_toque_vizu"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/toque_para_vizualizar"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        app:drawableEndCompat="@drawable/ic_visibility_24" />
+                        isVisible="@{vm.onTextView}"
+                        style="@style/TextViewPixToqueVizu" />
+
+                    <TextView
+                        android:id="@+id/txtv_valor"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        style="@style/TextViewPixTxtValor"
+                        isVisible="@{vm.onTextView2}"/>
                 </LinearLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -78,10 +83,7 @@
                         android:id="@+id/textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="7dp"
-                        android:text="@string/cifrão"
-                        android:textSize="30sp"
-                        android:textStyle="bold"
+                        style="@style/TextViewPixManual1"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/textView2"
                         app:layout_constraintHorizontal_bias="1.0"
@@ -92,10 +94,7 @@
                         android:id="@+id/textView2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/_500"
-                        android:textColor="@color/textvalor_color"
-                        android:textSize="30sp"
-                        app:drawableEndCompat="@drawable/ic_edit_24"
+                        style="@style/TextViewPixManual2"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -113,12 +112,7 @@
                         android:id="@+id/edtData"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/white"
-                        android:cursorVisible="false"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        android:inputType="date"
-                        android:text="@string/_27_11_2021" />
+                        style="@style/EditTextDataPixManual" />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -131,9 +125,7 @@
                         android:id="@+id/edtDescript"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/white"
-                        android:hint="@string/descri_o_opcional"
-                        android:text="@string/descricaoedt" />
+                        style="@style/EditTextDescriptPixManual" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -147,9 +139,7 @@
                         android:id="@+id/edtInstFinanceiro"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/white"
-                        android:hint="@string/instutui_o_financeira"
-                        android:text="@string/bancoabc" />
+                        style="@style/EditTextInstFinPixManual" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -161,9 +151,7 @@
                         android:id="@+id/edtAgencia"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/white"
-                        android:hint="@string/agencia"
-                        android:text="@string/_1234" />
+                        style="@style/EditTextAgenciaPixManual"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -175,9 +163,7 @@
                         android:id="@+id/edtConta"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/white"
-                        android:hint="@string/conta"
-                        android:text="@string/_5678" />
+                        style="@style/EditTextContaPixManual"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -191,9 +177,7 @@
                         android:id="@+id/edtTypeConta"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/white"
-                        android:hint="@string/tipo_de_conta"
-                        android:text="@string/conta_corrente" />
+                        style="@style/EditTextTypeContaPixManual" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -207,9 +191,7 @@
                         android:id="@+id/edtTitularidade"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/white"
-                        android:hint="@string/titularidade"
-                        android:text="@string/diferente_titularidade" />
+                        style="@style/EditTextTitularidadePixManual" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -221,10 +203,7 @@
                         android:id="@+id/edtNome"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/white"
-                        android:enabled="false"
-                        android:hint="@string/nome"
-                        android:text="@string/nome_do_benefici_rio" />
+                        style="@style/EditTextNomePixManual" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -236,9 +215,7 @@
                         android:id="@+id/edtCpfCnpj"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/white"
-                        android:hint="@string/cpf_cnpj"
-                        android:text="@string/_123_456_789_10" />
+                        style="@style/EditTextCpfCpnjPixManual" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -268,11 +245,11 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:enabled="false"
+                    android:enabled="@{vm.buttonEnabled}"
                     android:text="@string/transferir"
                     android:textAllCaps="false"
                     android:textStyle="bold" />
             </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
+        </ScrollView>
+    </LinearLayout>
 </layout>

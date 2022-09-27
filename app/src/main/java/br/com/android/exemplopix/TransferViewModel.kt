@@ -25,11 +25,16 @@ class TransferViewModel : ViewModel() {
             isCpfValid(it) -> ValidType.CPF
             isCnpjValid(it) -> ValidType.CNPJ
             isEmailValid(it) -> ValidType.EMAIL
-//            isCelularValid(it) -> ValidType.CELULAR // Criar aqui...
+            isCelularValid(it) -> ValidType.CELULAR
             else -> ValidType.NON_VALID
         }
     }
 
+    fun isCelularValid(document: String): Boolean {
+        if (!document.isDigitsOnly()) return false
+        val regex = Regex("""^\d{2}[7-9][7-9]\d{7}${'$'}""")
+        return regex.containsMatchIn(document)
+    }
 
     val isEnabled = validType.map {
         it != ValidType.NON_VALID

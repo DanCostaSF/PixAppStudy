@@ -68,7 +68,6 @@
     </style>
 
     <style name="MaterialToolbarPix" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="menu">@menu/menu_pix</item>
         <item name="android:layout_height">?attr/actionBarSize</item>
         <item name="navigationIcon">@drawable/ic_back_24</item>
         <item name="title">@string/pix</item>
@@ -100,5 +99,79 @@
     <style name="CustomCheckBox" parent="Widget.AppCompat.CompoundButton.CheckBox">
         <item name="android:button">@drawable/checkbox_selector</item>
         <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="TextViewPixManual1" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:text">@string/cifrão</item>
+        <item name="android:layout_marginEnd">7dp</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextViewPixManual2" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:text">@string/_500</item>
+        <item name="android:textColor">@color/textvalor_color</item>
+        <item name="android:textSize">30sp</item>
+        <item name="drawableEndCompat">@drawable/ic_edit_24</item>
+    </style>
+    
+    <style name="EditTextDataPixManual" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:cursorVisible">false</item>
+        <item name="android:focusable">false</item>
+        <item name="android:focusableInTouchMode">false</item>
+        <item name="android:inputType">date</item>
+        <item name="android:text">@string/_27_11_2021</item>
+    </style>
+    
+    <style name="EditTextDescriptPixManual" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:hint">@string/descri_o_opcional</item>
+    </style>
+
+    <style name="EditTextInstFinPixManual" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:hint">@string/instutui_o_financeira</item>
+        <item name="android:text">@string/nenhum_selecionado</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:cursorVisible">false</item>
+        <item name="android:focusable">false</item>
+        <item name="android:focusableInTouchMode">false</item>
+    </style>
+
+    <style name="EditTextAgenciaPixManual" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:hint">@string/agencia</item>
+    </style>
+
+    <style name="EditTextContaPixManual" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:hint">@string/conta</item>
+        <item name="android:backgroundTint">@color/white</item>
+    </style>
+
+    <style name="EditTextTypeContaPixManual" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:hint">@string/tipo_de_conta</item>
+        <item name="android:text">@string/nenhum_selecionado</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:focusable">false</item>
+        <item name="android:focusableInTouchMode">false</item>
+        <item name="android:cursorVisible">false</item>
+    </style>
+    <style name="EditTextTitularidadePixManual" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:hint">@string/titularidade</item>
+        <item name="android:text">@string/nenhum_selecionado</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:focusable">false</item>
+        <item name="android:focusableInTouchMode">false</item>
+        <item name="android:cursorVisible">false</item>
+    </style>
+
+    <style name="EditTextNomePixManual" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:hint">@string/nome_do_benefici_rio</item>
+        <item name="android:backgroundTint">@color/white</item>
+    </style>
+
+    <style name="EditTextCpfCpnjPixManual" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:hint">@string/cpf_cnpj</item>
     </style>
 </resources>

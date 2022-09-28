@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="vm"
             type="br.com.android.exemplopix.PixManualViewModel" />
@@ -82,16 +83,17 @@
                         android:id="@+id/edtMoneyChange"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textSize="@dimen/size_30"
+                        android:background="@android:color/transparent"
                         android:gravity="center_horizontal"
                         android:inputType="numberDecimal"
-                        android:text="@string/r_500"
                         android:maxLength="12"
+                        android:text="@string/r_500"
                         android:textColor="@color/textvalor_color"
+                        android:textSize="@dimen/size_30"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"/>
+                        app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -119,7 +121,7 @@
                         style="@style/EditTextDescriptPixManual"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textImeMultiLine"/>
+                        android:inputType="textImeMultiLine" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -146,7 +148,7 @@
                         style="@style/EditTextAgenciaPixManual"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textImeMultiLine"/>
+                        android:inputType="textImeMultiLine" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -159,7 +161,7 @@
                         style="@style/EditTextContaPixManual"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textImeMultiLine"/>
+                        android:inputType="textImeMultiLine" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -200,7 +202,7 @@
                         style="@style/EditTextNomePixManual"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textImeMultiLine"/>
+                        android:inputType="textImeMultiLine" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -213,7 +215,7 @@
                         style="@style/EditTextCpfCpnjPixManual"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textImeMultiLine"/>
+                        android:inputType="textImeMultiLine" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout

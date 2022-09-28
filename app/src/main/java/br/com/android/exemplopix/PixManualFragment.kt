@@ -9,7 +9,6 @@ import androidx.core.view.ViewCompat
 import androidx.fragment.app.viewModels
 import br.com.android.exemplopix.commons.*
 import br.com.android.exemplopix.databinding.FragmentPixManualBinding
-import com.google.android.material.textfield.TextInputEditText
 import java.util.*
 
 // A toolbar tem que ficar fixa no topo. Remover o ícone de interrogação do topo.(X)
@@ -106,7 +105,6 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
         }
     }
 
-    @SuppressLint("SetTextI18n")
     private fun FragmentPixManualBinding.setupEditTextData() {
         if (isDpdOpen) return
         val c = Calendar.getInstance()
@@ -120,16 +118,7 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
             isDpdOpen = true
             val dpd = DatePickerDialog(
                 requireContext(), { _, mYear, mMonth, mDay ->
-                    if (mMonth <= 8 && mDay <= 9) {
-                        binding.edtData.setText("0$mDay/0${mMonth + 1}/$mYear")
-                    } else if (mMonth <= 8) {
-                        binding.edtData.setText("$mDay/0${mMonth + 1}/$mYear")
-                    } else if (mDay <= 9) {
-                        binding.edtData.setText("0$mDay/${mMonth + 1}/$mYear")
-                    } else {
-                        binding.edtData.setText("$mDay/${mMonth + 1}/$mYear")
-                    }
-
+                    filterDate(mMonth, mDay, mYear)
                     day = mDay
                     month = mMonth
                     year = mYear
@@ -142,6 +131,19 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
             dpd.datePicker
             dpd.datePicker.maxDate = "1665220328000".toLong()
             dpd.show()
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun filterDate(mMonth: Int, mDay: Int, mYear: Int) {
+        if (mMonth <= 8 && mDay <= 9) {
+            binding.edtData.setText("0$mDay/0${mMonth + 1}/$mYear")
+        } else if (mMonth <= 8) {
+            binding.edtData.setText("$mDay/0${mMonth + 1}/$mYear")
+        } else if (mDay <= 9) {
+            binding.edtData.setText("0$mDay/${mMonth + 1}/$mYear")
+        } else {
+            binding.edtData.setText("$mDay/${mMonth + 1}/$mYear")
         }
     }
 

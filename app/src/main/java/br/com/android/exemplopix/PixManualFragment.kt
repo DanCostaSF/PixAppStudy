@@ -32,7 +32,7 @@ import java.util.*
 // Digitar o nome do cara tbm.(X)
 // O valor lá de cima tem que ser um campo de digitação. Se o valor estiver zerado, considerar ele como campo vazio, para desabilitar. 0 tem que desabilitar o botão.
 
-// Criar style pra tudo que tem texto.
+// Criar style pra tudo que tem texto.(X)
 class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
     R.layout.fragment_pix_manual
 ), DialogsInterface {
@@ -87,22 +87,25 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
 
     private fun FragmentPixManualBinding.setupEditTextData() {
         if (isDpdOpen) return
+        val c = Calendar.getInstance()
+        val year = c.get(Calendar.YEAR)
+        val month = c.get(Calendar.MONTH)
+        val day = c.get(Calendar.DAY_OF_MONTH)
+
+        binding.edtData.setText("$day/0${month+1}/$year")
 
         edtData.setOnClickListener {
             isDpdOpen = true
-            val c = Calendar.getInstance()
-            val year = c.get(Calendar.YEAR)
-            val month = c.get(Calendar.MONTH)
-            val day = c.get(Calendar.DAY_OF_MONTH)
             val dpd = DatePickerDialog(
                 requireContext(), { _, mYear, mMonth, mDay ->
-                    binding.edtData.setText("$mDay/$mMonth/$mYear")
+                    binding.edtData.setText("$mDay/0${mMonth+1}/$mYear")
                     isDpdOpen = false
                 },
                 year,
                 month,
                 day
             )
+            dpd.datePicker.maxDate = "1665220328000".toLong()
             dpd.show()
         }
     }

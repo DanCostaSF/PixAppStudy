@@ -3,21 +3,10 @@ package br.com.android.exemplopix.commons
 import androidx.core.text.isDigitsOnly
 import androidx.core.util.PatternsCompat
 
-fun setCpfFormatado(cpf: String): String {
-    val cpfFormated = cpf.substring(0, 3) + "." +
-            cpf.substring(3, 6) + "." +
-            cpf.substring(6, 9) + "-" +
-            cpf.substring(9, 11)
-    return "TIPO: CPF - VALOR: $cpfFormated"
-}
-
-fun setCnpjFormatado(cnpj: String): String {
-    val cnpjFormated = cnpj.substring(0, 2) + "." +
-            cnpj.substring(2, 5) + "." +
-            cnpj.substring(5, 8) + "/" +
-            cnpj.substring(8, 12) + "-" +
-            cnpj.substring(12, 14)
-    return "TIPO: CNPJ - VALOR: $cnpjFormated"
+fun isCelularValid(document: String): Boolean {
+    if (!document.isDigitsOnly()) return false
+    val regex = Regex("""^\d{2}[7-9][7-9]\d{7}${'$'}""")
+    return regex.containsMatchIn(document)
 }
 
 fun isEmailValid(document: String): Boolean {
@@ -65,7 +54,6 @@ fun isCpfValid(document: String): Boolean {
 
     return numbers[9] == dv1 && numbers[10] == dv2
 }
-
 
 enum class ValidType {
     CPF,

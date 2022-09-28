@@ -10,7 +10,9 @@ import br.com.android.exemplopix.databinding.BottomSheetFinanceiroBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class BottomSheetFinanceiroFragment(private val dialogsInterface: DialogsInterface) : BottomSheetDialogFragment() {
+class BottomSheetFinanceiroFragment(
+    private val dialogsInterface: DialogsInterface
+    ) : BottomSheetDialogFragment() {
 
     private var _binding: BottomSheetFinanceiroBinding? = null
     private val binding get() = _binding!!
@@ -31,13 +33,11 @@ class BottomSheetFinanceiroFragment(private val dialogsInterface: DialogsInterfa
         super.onViewCreated(view, savedInstanceState)
         setupViewModel()
         setupObservers()
-        val bottomSheetBehavior = BottomSheetBehavior.from(view.parent as View)
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+//        val bottomSheetBehavior = BottomSheetBehavior.from(view.parent as View)
+//        bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
 //        binding.layout.minHeight =
 //            (Resources.getSystem().displayMetrics.heightPixels * 0.80).toInt()
-
     }
-
 
     private fun setupViewModel() {
         binding.vm = _bottomSheetViewModel

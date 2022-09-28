@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="toolbar_pix_fragment">14sp</dimen>
-    <dimen name="margin_toolbar_pix">20dp</dimen>
-    <dimen name="margin_layout_pix">15dp</dimen>
-    <dimen name="margin_top_pix">150dp</dimen>
-    <dimen name="text_view_valor_transf">30sp</dimen>
-    <dimen name="margin10dp">10dp</dimen>
+    <dimen name="size_14">14sp</dimen>
+    <dimen name="spacing_20">20dp</dimen>
+    <dimen name="spacing_15">15dp</dimen>
+    <dimen name="spacing_150">150dp</dimen>
+    <dimen name="size_30">30sp</dimen>
+    <dimen name="spacing_10">10dp</dimen>
     <dimen name="min_heigh_et">48dp</dimen>
-    <dimen name="size16">16sp</dimen>
+    <dimen name="size_16">16sp</dimen>
+    <dimen name="spacing_30">30dp</dimen>
+    <dimen name="spacing_22">22dp</dimen>
+    <dimen name="spacing_0">0dp</dimen>
+    <dimen name="size_18">18sp</dimen>
+    <dimen name="spacing_5">5dp</dimen>
+    <dimen name="size_17">17sp</dimen>
 </resources>

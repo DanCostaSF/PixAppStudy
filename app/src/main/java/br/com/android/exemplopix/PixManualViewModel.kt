@@ -19,18 +19,15 @@ class PixManualViewModel : ViewModel() {
     }
 
     fun onTextViewVisibility() {
-        if(onTextView.value == false) {
+        if (onTextView.value == false) {
             onTextView.postValue(true)
         } else {
             onTextView.postValue(false)
         }
-        if(onTextView2.value == false) {
+        if (onTextView2.value == false) {
             onTextView2.postValue(true)
         } else {
             onTextView2.postValue(false)
         }
     }
-
-
-
 }

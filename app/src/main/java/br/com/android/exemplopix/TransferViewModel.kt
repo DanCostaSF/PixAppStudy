@@ -30,12 +30,6 @@ class TransferViewModel : ViewModel() {
         }
     }
 
-    fun isCelularValid(document: String): Boolean {
-        if (!document.isDigitsOnly()) return false
-        val regex = Regex("""^\d{2}[7-9][7-9]\d{7}${'$'}""")
-        return regex.containsMatchIn(document)
-    }
-
     val isEnabled = validType.map {
         it != ValidType.NON_VALID
     }
@@ -48,15 +42,6 @@ class TransferViewModel : ViewModel() {
             ValidType.CELULAR -> setCelularFormatado(editText.value.toString())
             else -> "" // null
         }
-    }
-
-    fun setCelularFormatado(celular: String): String {
-        val cellFormated = celular.substring(0, 0) + "(" +
-                celular.substring(0, 2) + ")" +
-                celular.substring(2, 7) + "-" +
-                celular.substring(7, 11)
-
-        return "TIPO: CELULAR - VALOR: $cellFormated"
     }
 
 

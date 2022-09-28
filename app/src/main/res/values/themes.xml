@@ -18,53 +18,53 @@
         <item name="android:drawableEnd">@drawable/ic_next_24</item>
         <item name="textAllCaps">false</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:layout_marginStart">@dimen/margin_layout_pix</item>
-        <item name="android:layout_marginEnd">@dimen/margin_layout_pix</item>
-        <item name="android:layout_marginBottom">@dimen/margin_layout_pix</item>
+        <item name="android:layout_marginStart">@dimen/spacing_15</item>
+        <item name="android:layout_marginEnd">@dimen/spacing_15</item>
+        <item name="android:layout_marginBottom">@dimen/spacing_15</item>
         <item name="android:text">@string/proximo</item>
         <item name="android:layout_height">60dp</item>
     </style>
 
     <style name="TextViewPixValorTransf" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="android:layout_marginStart">@dimen/margin_layout_pix</item>
-        <item name="android:layout_marginTop">@dimen/margin_top_pix</item>
+        <item name="android:layout_marginStart">@dimen/spacing_15</item>
+        <item name="android:layout_marginTop">@dimen/spacing_150</item>
         <item name="android:textColor">@color/textvalor_color</item>
-        <item name="android:textSize">@dimen/text_view_valor_transf</item>
+        <item name="android:textSize">@dimen/size_30</item>
     </style>
 
     <style name="EditTextPix" parent="Theme.MaterialComponents.Light.NoActionBar" >
-        <item name="android:layout_marginStart">@dimen/margin_layout_pix</item>
-        <item name="android:layout_marginTop">@dimen/margin10dp</item>
-        <item name="android:layout_marginEnd">@dimen/margin_layout_pix</item>
+        <item name="android:layout_marginStart">@dimen/spacing_15</item>
+        <item name="android:layout_marginTop">@dimen/spacing_10</item>
+        <item name="android:layout_marginEnd">@dimen/spacing_15</item>
         <item name="android:textColor">@color/black</item>
         <item name="minHeight">@dimen/min_heigh_et</item>
 
     </style>
 
     <style name="TextViewPixToqueVizu" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="android:layout_marginTop">@dimen/margin_layout_pix</item>
-        <item name="android:layout_marginEnd">@dimen/margin_layout_pix</item>
+        <item name="android:layout_marginTop">@dimen/spacing_15</item>
+        <item name="android:layout_marginEnd">@dimen/spacing_15</item>
         <item name="android:text">@string/toque_para_vizualizar</item>
         <item name="android:textColor">@color/black</item>
-        <item name="paddingStart">@dimen/margin10dp</item>
+        <item name="paddingStart">@dimen/spacing_10</item>
         <item name="android:textStyle">bold</item>
         <item name="drawableEndCompat">@drawable/ic_visibility_24</item>
     </style>
 
     <style name="TextViewPixTxtValor">
-        <item name="android:layout_marginTop">@dimen/margin_layout_pix</item>
-        <item name="android:layout_marginEnd">@dimen/margin_layout_pix</item>
+        <item name="android:layout_marginTop">@dimen/spacing_15</item>
+        <item name="android:layout_marginEnd">@dimen/spacing_15</item>
         <item name="android:text">@string/r_10000_00</item>
         <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">@dimen/toolbar_pix_fragment</item>
+        <item name="android:textSize">@dimen/size_14</item>
     </style>
 
     <style name="TextViewSaldoLimite" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="android:layout_marginStart">@dimen/margin_layout_pix</item>
-        <item name="android:layout_marginTop">@dimen/margin_layout_pix</item>
+        <item name="android:layout_marginStart">@dimen/spacing_15</item>
+        <item name="android:layout_marginTop">@dimen/spacing_15</item>
         <item name="android:text">@string/saldo_limite</item>
         <item name="android:textColor">@color/black</item>
-        <item name="android:textSize">@dimen/toolbar_pix_fragment</item>
+        <item name="android:textSize">@dimen/size_14</item>
     </style>
 
     <style name="MaterialToolbarPix" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -76,7 +76,7 @@
     </style>
 
     <style name="TextViewInfo" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="android:textSize">@dimen/size16</item>
+        <item name="android:textSize">@dimen/size_16</item>
         <item name="android:textStyle">bold</item>
         <item name="android:gravity">center</item>
     </style>
@@ -173,5 +173,61 @@
     <style name="EditTextCpfCpnjPixManual" parent="Theme.MaterialComponents.NoActionBar">
         <item name="android:backgroundTint">@color/white</item>
         <item name="android:hint">@string/cpf_cnpj</item>
+    </style>
+
+    <style name="TextView1TransferFragment" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:layout_marginStart">@dimen/spacing_30</item>
+        <item name="android:layout_marginTop">@dimen/spacing_30</item>
+        <item name="android:text">@string/digite_a_chave_do_recebedor</item>
+        <item name="android:textColor">@color/textvalor_color</item>
+        <item name="android:textSize">@dimen/size_30</item>
+    </style>
+    
+    <style name="TextView2TransferFragment" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:layout_marginStart">@dimen/spacing_20</item>
+        <item name="android:layout_marginTop">@dimen/spacing_30</item>
+        <item name="android:text">@string/chave_pix</item>
+        <item name="android:textColor">@color/cor_pix_letra</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="EditTextChavePixTransferFragment" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:layout_marginStart">@dimen/spacing_20</item>
+        <item name="android:layout_marginEnd">@dimen/spacing_20</item>
+        <item name="android:hint">@string/edittext_chavepix</item>
+        <item name="android:maxLength">100</item>
+        <item name="android:paddingBottom">@dimen/spacing_22</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textColorHint">@color/hint_edittext</item>
+        <item name="android:textSize">@dimen/size_16</item>
+    </style>
+
+    <style name="TextView3TransferFragment" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:text">@string/pix_manual</item>
+        <item name="android:textColor">@color/cinza</item>
+        <item name="android:textSize">@dimen/size_18</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextView4TransferFragment" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:layout_marginTop">@dimen/spacing_5</item>
+        <item name="android:text">@string/pixmanualtext</item>
+        <item name="android:textColor">@color/cinza_claro</item>
+    </style>
+    
+    <style name="TextView5TransferFragment" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:text">@string/favoritos</item>
+        <item name="android:textColor">@color/cinza_claro</item>
+        <item name="android:textSize">@dimen/size_17</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    
+    <style name="EditTextSearchTransferFragment" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="android:layout_marginTop">@dimen/spacing_10</item>
+        <item name="android:drawableEnd">@drawable/ic_search_24</item>
+        <item name="android:hint">@string/buscar</item>
+        <item name="android:paddingBottom">@dimen/spacing_22</item>
+        <item name="android:textColorHint">@color/cinza_clarin</item>
+        <item name="android:inputType">text</item>
     </style>
 </resources>

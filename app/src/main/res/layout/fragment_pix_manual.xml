@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="vm"
             type="br.com.android.exemplopix.PixManualViewModel" />
@@ -47,31 +46,31 @@
                     android:id="@+id/contentShowMoney"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/margin10dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/spacing_10">
 
                     <TextView
+                        style="@style/TextViewSaldoLimite"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        style="@style/TextViewSaldoLimite"/>
+                        android:layout_weight="1" />
 
                     <TextView
                         android:id="@+id/txtv_toque_vizu"
+                        style="@style/TextViewPixToqueVizu"
+                        isVisible="@{vm.onTextView}"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        isVisible="@{vm.onTextView}"
-                        style="@style/TextViewPixToqueVizu" />
+                        android:layout_weight="1" />
 
                     <TextView
                         android:id="@+id/txtv_valor"
+                        style="@style/TextViewPixTxtValor"
+                        isVisible="@{vm.onTextView2}"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:gravity="center_horizontal"
-                        style="@style/TextViewPixTxtValor"
-                        isVisible="@{vm.onTextView2}"/>
+                        android:gravity="center_horizontal" />
                 </LinearLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -81,9 +80,9 @@
 
                     <TextView
                         android:id="@+id/textView"
+                        style="@style/TextViewPixManual1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/TextViewPixManual1"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/textView2"
                         app:layout_constraintHorizontal_bias="1.0"
@@ -92,9 +91,9 @@
 
                     <TextView
                         android:id="@+id/textView2"
+                        style="@style/TextViewPixManual2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        style="@style/TextViewPixManual2"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -110,119 +109,119 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtData"
+                        style="@style/EditTextDataPixManual"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/EditTextDataPixManual" />
+                        android:layout_height="wrap_content" />
                 </com.google.android.material.textfield.TextInputLayout>
 
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin10dp">
+                    android:layout_marginTop="@dimen/spacing_10">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtDescript"
+                        style="@style/EditTextDescriptPixManual"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/EditTextDescriptPixManual" />
+                        android:layout_height="wrap_content" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin10dp"
+                    android:layout_marginTop="@dimen/spacing_10"
                     app:endIconDrawable="@drawable/ic_arrow_up_24"
                     app:endIconMode="custom">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtInstFinanceiro"
+                        style="@style/EditTextInstFinPixManual"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/EditTextInstFinPixManual" />
+                        android:layout_height="wrap_content" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin10dp">
+                    android:layout_marginTop="@dimen/spacing_10">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtAgencia"
+                        style="@style/EditTextAgenciaPixManual"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/EditTextAgenciaPixManual"/>
+                        android:layout_height="wrap_content" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin10dp">
+                    android:layout_marginTop="@dimen/spacing_10">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtConta"
+                        style="@style/EditTextContaPixManual"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/EditTextContaPixManual"/>
+                        android:layout_height="wrap_content" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin10dp"
+                    android:layout_marginTop="@dimen/spacing_10"
                     app:endIconDrawable="@drawable/ic_arrow_up_24"
                     app:endIconMode="custom">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtTypeConta"
+                        style="@style/EditTextTypeContaPixManual"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/EditTextTypeContaPixManual" />
+                        android:layout_height="wrap_content" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin10dp"
+                    android:layout_marginTop="@dimen/spacing_10"
                     app:endIconDrawable="@drawable/ic_arrow_up_24"
                     app:endIconMode="custom">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtTitularidade"
+                        style="@style/EditTextTitularidadePixManual"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/EditTextTitularidadePixManual" />
+                        android:layout_height="wrap_content" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin10dp">
+                    android:layout_marginTop="@dimen/spacing_10">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtNome"
+                        style="@style/EditTextNomePixManual"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/EditTextNomePixManual" />
+                        android:layout_height="wrap_content" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin10dp">
+                    android:layout_marginTop="@dimen/spacing_10">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtCpfCnpj"
+                        style="@style/EditTextCpfCpnjPixManual"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        style="@style/EditTextCpfCpnjPixManual" />
+                        android:layout_height="wrap_content" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/contentFavClick"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin10dp">
+                    android:layout_marginTop="@dimen/spacing_10">
 
                     <TextView
                         android:layout_width="wrap_content"

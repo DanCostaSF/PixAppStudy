@@ -27,6 +27,7 @@ class PixFragment : BaseFragment<FragmentPixBinding>(
 
         editTextSetup()
 
+
         binding.apply {
             setupNextButton()
             setupContentShow()

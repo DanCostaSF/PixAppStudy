@@ -12,4 +12,7 @@
     <color name="icons_color">#F2F2F2</color>
     <color name="textvalor_color">#347A5F</color>
     <color name="hint_edittext">#C8B9B9</color>
+    <color name="cinza">#606060</color>
+    <color name="cinza_claro">#989595</color>
+    <color name="cinza_clarin">#B6B4B4</color>
 </resources>

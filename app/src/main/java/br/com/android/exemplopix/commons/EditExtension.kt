@@ -4,7 +4,7 @@ import com.google.android.material.textfield.TextInputEditText
 
 fun List<TextInputEditText>.validateField() : Boolean {
     this.forEach {
-        if (it.text.isNullOrEmpty() || it.text.toString() == "Nenhum selecionado") {
+        if (it.text.isNullOrBlank() || it.text.toString() == "Nenhum selecionado") {
             return false
         }
     }

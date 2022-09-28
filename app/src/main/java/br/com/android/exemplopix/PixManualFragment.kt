@@ -49,7 +49,8 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val color = activity?.let { ContextCompat.getColorStateList(it.applicationContext, R.color.white) }
+        val color =
+            activity?.let { ContextCompat.getColorStateList(it.applicationContext, R.color.white) }
         ViewCompat.setBackgroundTintList(binding.edtMoneyChange, color)
         setupEditTextChangeMoney()
 

@@ -4,12 +4,12 @@ import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
 import androidx.fragment.app.viewModels
-import br.com.android.exemplopix.commons.BaseFragment
-import br.com.android.exemplopix.commons.DialogsInterface
-import br.com.android.exemplopix.commons.observeAndNavigateBack
-import br.com.android.exemplopix.commons.validateField
+import br.com.android.exemplopix.commons.*
 import br.com.android.exemplopix.databinding.FragmentPixManualBinding
+import com.google.android.material.textfield.TextInputEditText
 import java.util.*
 
 // A toolbar tem que ficar fixa no topo. Remover o ícone de interrogação do topo.(X)
@@ -50,6 +50,10 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val color = activity?.let { ContextCompat.getColorStateList(it.applicationContext, R.color.white) }
+        ViewCompat.setBackgroundTintList(binding.edtMoneyChange, color)
+        setupEditTextChangeMoney()
+
         binding.apply {
             setupEditTextData()
             setupClickShowMoney()
@@ -57,6 +61,16 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
             setupEditTextTypeAccount()
             setupEditTextTitularidade()
         }
+    }
+
+    private fun setupEditTextChangeMoney() {
+        val mlocal = Locale("pt", "BR")
+        binding.edtMoneyChange.addTextChangedListener(
+            MaskMoney(binding.edtMoneyChange, mlocal) { vl ->
+                val value = vl.toString()
+                valor = value
+            }
+        )
     }
 
     private fun FragmentPixManualBinding.setupEditTextTitularidade() {
@@ -100,15 +114,15 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
         var month = c.get(Calendar.MONTH)
         var day = c.get(Calendar.DAY_OF_MONTH)
 
-        binding.edtData.setText("$day/0${month+1}/$year")
+        binding.edtData.setText("$day/0${month + 1}/$year")
 
         edtData.setOnClickListener {
             isDpdOpen = true
             val dpd = DatePickerDialog(
                 requireContext(), { _, mYear, mMonth, mDay ->
-                    if (mMonth <= 8 && mDay <= 9 ) {
+                    if (mMonth <= 8 && mDay <= 9) {
                         binding.edtData.setText("0$mDay/0${mMonth + 1}/$mYear")
-                    } else if (mMonth <= 8){
+                    } else if (mMonth <= 8) {
                         binding.edtData.setText("$mDay/0${mMonth + 1}/$mYear")
                     } else if (mDay <= 9) {
                         binding.edtData.setText("0$mDay/${mMonth + 1}/$mYear")
@@ -139,7 +153,11 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
         observeAndNavigateBack(_pixManualViewModel.onNavigateBack)
 
         _pixManualViewModel.buttonEnabled.observe(viewLifecycleOwner) {
-            _pixManualViewModel.buttonIsEnabled(getAllFields())
+            if (valor == "0.00") {
+                _pixManualViewModel.buttonIsEnabled(false)
+            } else {
+                _pixManualViewModel.buttonIsEnabled(getAllFields())
+            }
         }
     }
 
@@ -164,6 +182,10 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
             binding.edtConta,
             binding.edtTypeConta,
             binding.edtTitularidade,
-            binding.edtCpfCnpj
+            binding.edtCpfCnpj,
         ).validateField()
+
+    companion object {
+        private var valor = ""
+    }
 }

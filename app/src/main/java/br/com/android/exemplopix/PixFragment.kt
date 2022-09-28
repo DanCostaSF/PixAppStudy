@@ -27,7 +27,6 @@ class PixFragment : BaseFragment<FragmentPixBinding>(
 
         editTextSetup()
 
-
         binding.apply {
             setupNextButton()
             setupContentShow()
@@ -55,8 +54,10 @@ class PixFragment : BaseFragment<FragmentPixBinding>(
 
         isDialogOpen = true
 
-        val list = arrayOf("    ",
-            "Me da um chicletão", "boa noit bruno", "      ", "", "")
+        val list = arrayOf(
+            "    ",
+            "Me da um chicletão", "boa noit bruno", "      ", "", ""
+        )
 
         showAlertDialog(
             R.string.duvida,

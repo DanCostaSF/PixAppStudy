@@ -21,14 +21,17 @@ import java.util.*
 // 260 - Nubnak
 // 270 - Sicredi
 // 300 - Itau
-// Qdo clicar em algum item, retornar para a tela anterior e passar o valor seleciona no campo. ESSE COMPONENTE TBM NÃO pode ser alterado por digitação.(X)
+// Qdo clicar em algum item, retornar para a tela anterior e passar o valor seleciona no campo.(X)
+// ESSE COMPONENTE TBM NÃO pode ser alterado por digitação.(X)
 
 // Tipo de conta (MESMO LAYOUT DE CIMA ^) : // Corrente // Poupança // Salario(X)
 // Titulariadade (MESMO LAYOUT DE CIMA ^) : // Sim // Não(X)
 
 // Quando todos os campos estiverem preenchidos, habilitar o botão.(X)
-// O início da tela não terá nenhuma campoi preenchido. MENOS o campo da data que deve carregar do dia atual. Quando abrir o dialog da data, a data selecionada tem que estar selecionada no picker.
-//  E tu so vai poder selecionar a data atual até 10 dias pra frente.
+// O início da tela não terá nenhuma campoi preenchido.(X)
+// MENOS o campo da data que deve carregar do dia atual.(X)
+// Quando abrir o dialog da data, a data selecionada tem que estar selecionada no picker.
+//  E tu so vai poder selecionar a data atual até 10 dias pra frente.(X)
 // Digitar o nome do cara tbm.(X)
 // O valor lá de cima tem que ser um campo de digitação. Se o valor estiver zerado, considerar ele como campo vazio, para desabilitar. 0 tem que desabilitar o botão.
 
@@ -105,6 +108,7 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
                 month,
                 day
             )
+            dpd.datePicker
             dpd.datePicker.maxDate = "1665220328000".toLong()
             dpd.show()
         }

@@ -1,16 +1,14 @@
 package br.com.android.exemplopix
 
-import androidx.core.text.isDigitsOnly
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
 import br.com.android.exemplopix.commons.*
-import java.util.regex.Pattern
 
 // Centralizar mensagem do click do botão.
-// Passar validação do CELULAR pro outro arquivo
-// Quebrar em dois arquivos as validações em um arquivo e formatações em outro aqui.
+// Passar validação do CELULAR pro outro arquivo(X)
+// Quebrar em dois arquivos as validações em um arquivo e formatações em outro aqui.(X)
 class TransferViewModel : ViewModel() {
 
     val onNavigateBack = MutableLiveData(false)
@@ -43,7 +41,6 @@ class TransferViewModel : ViewModel() {
             else -> "" // null
         }
     }
-
 
     val contacts = MutableLiveData(
         listOf(

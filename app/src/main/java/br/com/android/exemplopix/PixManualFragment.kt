@@ -1,5 +1,6 @@
 package br.com.android.exemplopix
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.View
@@ -91,6 +92,7 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private fun FragmentPixManualBinding.setupEditTextData() {
         if (isDpdOpen) return
         val c = Calendar.getInstance()

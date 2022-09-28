@@ -36,8 +36,8 @@ import java.util.*
 // Quando abrir o dialog da data, a data selecionada tem que estar selecionada no picker.(X)
 //  E tu so vai poder selecionar a data atual até 10 dias pra frente.(X)
 // Digitar o nome do cara tbm.(X)
-// O valor lá de cima tem que ser um campo de digitação.
-// Se o valor estiver zerado, considerar ele como campo vazio, para desabilitar. 0 tem que desabilitar o botão.
+// O valor lá de cima tem que ser um campo de digitação.(X)
+// Se o valor estiver zerado, considerar ele como campo vazio, para desabilitar. 0 tem que desabilitar o botão.(X)
 
 // Criar style pra tudo que tem texto.(X)
 class PixManualFragment : BaseFragment<FragmentPixManualBinding>(

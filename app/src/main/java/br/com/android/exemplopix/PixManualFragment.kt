@@ -13,7 +13,9 @@ import java.util.*
 
 // A toolbar tem que ficar fixa no topo. Remover o ícone de interrogação do topo.(X)
 // CADE A FUNCIONALIDADE DE CLICK PARA MOSTRAR O SALDO - Depois tu vai criar um componente centralizado que tu só vai colar no XML depois.(X)
+
 // A formatação da data: Qua 01 Setembro 2022
+
 // Evitar possiblidade de duplicação de abertura do dialog(X)
 // Para os itens que tem a setinha pra cima (^). Abrir um bottom sheet que ocupe só o tamanho necessário.(X)
 //        Instituiçao Financeira          Fechar
@@ -30,10 +32,11 @@ import java.util.*
 // Quando todos os campos estiverem preenchidos, habilitar o botão.(X)
 // O início da tela não terá nenhuma campoi preenchido.(X)
 // MENOS o campo da data que deve carregar do dia atual.(X)
-// Quando abrir o dialog da data, a data selecionada tem que estar selecionada no picker.
+// Quando abrir o dialog da data, a data selecionada tem que estar selecionada no picker.(X)
 //  E tu so vai poder selecionar a data atual até 10 dias pra frente.(X)
 // Digitar o nome do cara tbm.(X)
-// O valor lá de cima tem que ser um campo de digitação. Se o valor estiver zerado, considerar ele como campo vazio, para desabilitar. 0 tem que desabilitar o botão.
+// O valor lá de cima tem que ser um campo de digitação.
+// Se o valor estiver zerado, considerar ele como campo vazio, para desabilitar. 0 tem que desabilitar o botão.
 
 // Criar style pra tudo que tem texto.(X)
 class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
@@ -91,9 +94,9 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
     private fun FragmentPixManualBinding.setupEditTextData() {
         if (isDpdOpen) return
         val c = Calendar.getInstance()
-        val year = c.get(Calendar.YEAR)
-        val month = c.get(Calendar.MONTH)
-        val day = c.get(Calendar.DAY_OF_MONTH)
+        var year = c.get(Calendar.YEAR)
+        var month = c.get(Calendar.MONTH)
+        var day = c.get(Calendar.DAY_OF_MONTH)
 
         binding.edtData.setText("$day/0${month+1}/$year")
 
@@ -101,7 +104,19 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
             isDpdOpen = true
             val dpd = DatePickerDialog(
                 requireContext(), { _, mYear, mMonth, mDay ->
-                    binding.edtData.setText("$mDay/0${mMonth+1}/$mYear")
+                    if (mMonth <= 8 && mDay <= 9 ) {
+                        binding.edtData.setText("0$mDay/0${mMonth + 1}/$mYear")
+                    } else if (mMonth <= 8){
+                        binding.edtData.setText("$mDay/0${mMonth + 1}/$mYear")
+                    } else if (mDay <= 9) {
+                        binding.edtData.setText("0$mDay/${mMonth + 1}/$mYear")
+                    } else {
+                        binding.edtData.setText("$mDay/${mMonth + 1}/$mYear")
+                    }
+
+                    day = mDay
+                    month = mMonth
+                    year = mYear
                     isDpdOpen = false
                 },
                 year,

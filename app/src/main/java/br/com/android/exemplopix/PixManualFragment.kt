@@ -2,22 +2,28 @@ package br.com.android.exemplopix
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import br.com.android.exemplopix.commons.*
 import br.com.android.exemplopix.databinding.FragmentPixManualBinding
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.*
 
-// Criar componente centralizado.
-// A formatação da data: Qua 01 Setembro 2022
+// A formatação da data: Qua 01 Setembro 2022(X)
+// Quando abrir o bottom sheet, trazer a opção já selecionada anteriormente.(X)
+// Descrição é opcional, entao nao entra na regra de habilitar o botão.(X)
+// o CPF ou CNPJ tem que estar válido.(X)
+// E tu so vai poder selecionar a data atual até 10 dias pra frente.(X)
+
+//centralizar as bottom sheets
+//Criar componente centralizado.
 // Evitar possiblidade de abertura duplicada dos bottom sheets.
-// Quando abrir o bottom sheet, trazer a opção já selecionada anteriormente.
-// Descrição é opcional, entao nao entra na regra de habilitar o botão.
-// o CPF ou CNPJ tem que estar válido.
-// E tu so vai poder selecionar a data atual até 10 dias pra frente.
+
 class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
     R.layout.fragment_pix_manual
 ), DialogsInterface {
@@ -50,7 +56,9 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
     }
 
     private fun FragmentPixManualBinding.setupEditTextTitularidade() {
-        edtTitularidade.setOnClickListener { showBottomSheetTitularity() }
+        edtTitularidade.setOnClickListener {
+            showBottomSheetTitularity()
+        }
     }
 
     private fun showBottomSheetTitularity() {
@@ -68,12 +76,26 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
     }
 
     private fun FragmentPixManualBinding.setupEditTextFinanceiro() {
-        edtInstFinanceiro.setOnClickListener { showBottomSheetDialogFinanceiro() }
+        edtInstFinanceiro.setOnClickListener {
+            if (isDpdOpen) return@setOnClickListener
+            isDpdOpen = true
+            showBottomSheetDialogFinanceiro()
+        }
     }
 
     private fun showBottomSheetDialogFinanceiro() {
         val botSheet = BottomSheetFinanceiroFragment(this)
         botSheet.show(requireActivity().supportFragmentManager, "BottomSheetDialog")
+        isDpdOpen = false
+//        botSheet.onDismiss(object: DialogInterface{
+//            override fun cancel() {
+//                isDpdOpen = false
+//            }
+//
+//            override fun dismiss() {
+//                isDpdOpen = false
+//            }
+//        })
     }
 
     private fun FragmentPixManualBinding.setupClickShowMoney() {
@@ -82,6 +104,7 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
         }
     }
 
+    @SuppressLint("NewApi")
     private fun FragmentPixManualBinding.setupEditTextData() {
         if (isDpdOpen) return
         val c = Calendar.getInstance()
@@ -89,14 +112,14 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
         var month = c.get(Calendar.MONTH)
         var day = c.get(Calendar.DAY_OF_MONTH)
 
-        binding.edtData.setText("$day/0${month + 1}/$year")
+        binding.edtData.setText(filterDate(month, day, year))
 
         edtData.setOnClickListener {
             isDpdOpen = true
             val dpd = DatePickerDialog(
                 requireContext(),
                 { _, mYear, mMonth, mDay ->
-                    filterDate(mMonth, mDay, mYear)
+                    binding.edtData.setText(filterDate(mMonth, mDay, mYear))
                     day = mDay
                     month = mMonth
                     year = mYear
@@ -106,23 +129,19 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
                 month,
                 day
             )
-            dpd.datePicker
-            dpd.datePicker.maxDate = "1665220328000".toLong()
+            val dat = Date()
+            dpd.datePicker.minDate = dat.time
+            dpd.datePicker.maxDate = dat.time + tenDaysInMiliSeconds
             dpd.show()
         }
+        isDpdOpen = false
     }
 
-    @SuppressLint("SetTextI18n")
-    private fun filterDate(mMonth: Int, mDay: Int, mYear: Int) {
-        if (mMonth <= 8 && mDay <= 9) {
-            binding.edtData.setText("0$mDay/0${mMonth + 1}/$mYear")
-        } else if (mMonth <= 8) {
-            binding.edtData.setText("$mDay/0${mMonth + 1}/$mYear")
-        } else if (mDay <= 9) {
-            binding.edtData.setText("0$mDay/${mMonth + 1}/$mYear")
-        } else {
-            binding.edtData.setText("$mDay/${mMonth + 1}/$mYear")
-        }
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun filterDate(mMonth: Int, mDay: Int, mYear: Int): String {
+        val data = LocalDate.of(mYear, mMonth + 1, mDay)
+        val simplaDateFormat = DateTimeFormatter.ofPattern("E dd LLLL yyyy", Locale("pt", "BR"))
+        return data.format(simplaDateFormat)
     }
 
     override fun setupViewModel() {
@@ -131,12 +150,16 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
 
     override fun setupObservers() {
         observeAndNavigateBack(_pixManualViewModel.onNavigateBack)
+        var btn = false
+        _pixManualViewModel.validCpf.observe(viewLifecycleOwner) {
+            btn = it
+        }
 
         _pixManualViewModel.buttonEnabled.observe(viewLifecycleOwner) {
-            if (valor == "0.00") {
-                _pixManualViewModel.buttonIsEnabled(false)
+            if (btn && valor != "0.00" && getAllFields()) {
+                _pixManualViewModel.buttonOn()
             } else {
-                _pixManualViewModel.buttonIsEnabled(getAllFields())
+                _pixManualViewModel.buttonOff()
             }
         }
     }
@@ -145,8 +168,10 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
         binding.edtTitularidade.setText(text)
     }
 
-    override fun instFinanceira(text: String) {
-        binding.edtInstFinanceiro.setText(text)
+    override fun instFinanceira(text: TypeBank) {
+        binding.edtInstFinanceiro.setText(text.text)
+        type = text.text
+        Log.i("teste", type)
     }
 
     override fun typeAccount(text: String) {
@@ -156,16 +181,21 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
     private fun getAllFields() =
         listOf(
             binding.edtData,
-            binding.edtDescript,
+            binding.edtBeneficiario,
             binding.edtInstFinanceiro,
             binding.edtAgencia,
             binding.edtConta,
             binding.edtTypeConta,
-            binding.edtTitularidade,
-            binding.edtCpfCnpj,
+            binding.edtTitularidade
         ).validateField()
 
     companion object {
         private var valor = ""
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        type = ""
+    }
 }
+

@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import br.com.android.exemplopix.commons.DialogsInterface
 import br.com.android.exemplopix.databinding.BottomSheetFinanceiroBinding
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class BottomSheetFinanceiroFragment(
@@ -23,7 +22,7 @@ class BottomSheetFinanceiroFragment(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = BottomSheetFinanceiroBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
@@ -33,11 +32,11 @@ class BottomSheetFinanceiroFragment(
         super.onViewCreated(view, savedInstanceState)
         setupViewModel()
         setupObservers()
+    }
 //        val bottomSheetBehavior = BottomSheetBehavior.from(view.parent as View)
 //        bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
 //        binding.layout.minHeight =
 //            (Resources.getSystem().displayMetrics.heightPixels * 0.80).toInt()
-    }
 
     private fun setupViewModel() {
         binding.vm = _bottomSheetViewModel
@@ -48,16 +47,39 @@ class BottomSheetFinanceiroFragment(
             if (it) dialog?.dismiss()
         }
 
+        _bottomSheetViewModel.teste.observe(viewLifecycleOwner) {
+            when(it) {
+                TypeBank.ITAU.text -> {
+                    _bottomSheetViewModel.trueItau()
+                }
+                TypeBank.SICREDI.text -> {
+                    _bottomSheetViewModel.trueSicredi()
+                }
+                TypeBank.NUBANK.text -> {
+                    _bottomSheetViewModel.trueNubank()
+                }
+                else -> {  _bottomSheetViewModel.falseAll() }
+            }
+        }
+
         _bottomSheetViewModel.checkItau.observe(viewLifecycleOwner) {
-            if (it) dialogsInterface.instFinanceira("300 - Itaú")
+            if (it) dialogsInterface.instFinanceira(TypeBank.ITAU)
         }
 
         _bottomSheetViewModel.checkNubank.observe(viewLifecycleOwner) {
-            if (it) dialogsInterface.instFinanceira("260 - Nubank")
+            if (it) dialogsInterface.instFinanceira(TypeBank.NUBANK)
         }
 
         _bottomSheetViewModel.checkSicredi.observe(viewLifecycleOwner) {
-            if (it) dialogsInterface.instFinanceira("270 - Sicredi")
+            if (it) dialogsInterface.instFinanceira(TypeBank.SICREDI)
         }
     }
+}
+
+var type = ""
+
+enum class TypeBank(val text: String) {
+    NUBANK("260 - Nubank"),
+    SICREDI("270 - Sicredi"),
+    ITAU("300 - Itaú")
 }

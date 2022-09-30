@@ -26,7 +26,6 @@ class TransferFragment : BaseFragment<FragmentTransferBinding>(
         binding.pixManual.setOnClickListener {
             navTo(TransferFragmentDirections.actionTransferFragmentToPixManualFragment())
         }
-
     }
 
     private fun setupRecycler() {

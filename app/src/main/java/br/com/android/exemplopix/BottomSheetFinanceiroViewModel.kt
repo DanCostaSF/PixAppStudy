@@ -10,6 +10,7 @@ class BottomSheetFinanceiroViewModel : ViewModel() {
     val checkNubank = MutableLiveData(false)
     val checkItau = MutableLiveData(false)
     val checkSicredi = MutableLiveData(false)
+    val teste = MutableLiveData(type)
 
     fun closeDialog() {
         closeButton.postValue(true)
@@ -25,6 +26,24 @@ class BottomSheetFinanceiroViewModel : ViewModel() {
         checkNubank.postValue(false)
         checkItau.postValue(true)
         checkSicredi.postValue(false)
+    }
+
+    fun trueNubank() {
+        checkNubank.postValue(true)
+    }
+
+    fun trueItau() {
+        checkItau.postValue(true)
+    }
+
+    fun falseAll() {
+        checkItau.postValue(false)
+        checkSicredi.postValue(false)
+        checkNubank.postValue(false)
+    }
+
+    fun trueSicredi() {
+        checkSicredi.postValue(true)
     }
 
     fun setupSicrediClick() {

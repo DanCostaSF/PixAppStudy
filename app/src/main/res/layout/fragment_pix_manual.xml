@@ -198,7 +198,7 @@
                     android:layout_marginTop="@dimen/spacing_10">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edtNome"
+                        android:id="@+id/edtBeneficiario"
                         style="@style/EditTextNomePixManual"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -213,6 +213,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtCpfCnpj"
                         style="@style/EditTextCpfCpnjPixManual"
+                        android:text="@={vm.editTextCpf}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textImeMultiLine" />

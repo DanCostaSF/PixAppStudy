@@ -1,15 +1,13 @@
 package br.com.android.exemplopix
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
-import br.com.android.exemplopix.commons.*
+import br.com.android.exemplopix.commons.BaseFragment
+import br.com.android.exemplopix.commons.MaskMoney
 import br.com.android.exemplopix.commons.MaskMoney.Companion.numero
+import br.com.android.exemplopix.commons.navTo
+import br.com.android.exemplopix.commons.showAlertDialog
 import br.com.android.exemplopix.databinding.FragmentPixBinding
 import com.google.android.material.snackbar.Snackbar
 import java.util.*
@@ -26,7 +24,6 @@ class PixFragment : BaseFragment<FragmentPixBinding>(
         super.onViewCreated(view, savedInstanceState)
 
         editTextSetup()
-
         binding.apply {
             setupNextButton()
             setupContentShow()

@@ -171,7 +171,6 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
     override fun instFinanceira(text: TypeBank) {
         binding.edtInstFinanceiro.setText(text.text)
         type = text.text
-        Log.i("teste", type)
     }
 
     override fun typeAccount(text: String) {

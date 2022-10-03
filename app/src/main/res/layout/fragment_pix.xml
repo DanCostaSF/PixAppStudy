@@ -48,44 +48,14 @@
                 android:background="@drawable/view_bg"
                 app:layout_constraintVertical_bias="0.3">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/click_money_show"
+                <br.com.android.exemplopix.components.LabelShowMoneyComponent
+                    android:id="@+id/lsmc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <TextView
-                        android:id="@+id/txtv_saldo_limite"
-                        style="@style/TextViewSaldoLimite"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintEnd_toStartOf="@id/txtv_toque_vizualizar"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/txt_valor"
-                        style="@style/TextViewPixTxtValor"
-                        isVisible="@{vm.onTextView2}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/txtv_toque_vizualizar"
-                        style="@style/TextViewPixToqueVizu"
-                        isVisible="@{vm.onTextView}"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toEndOf="@+id/txtv_saldo_limite"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                    app:money="100"/>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"

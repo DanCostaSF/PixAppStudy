@@ -74,43 +74,14 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/text" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <br.com.android.exemplopix.components.PixManualContentView
                     android:id="@+id/pixManual"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/spacing_0"
-                    android:layout_marginStart="@dimen/spacing_20"
-                    android:layout_marginTop="@dimen/spacing_10"
-                    android:layout_marginEnd="@dimen/spacing_20"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/ripple_effect"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/editChavePix">
-
-                    <TextView
-                        android:id="@+id/textView1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/TextView3TransferFragment"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        style="@style/TextView4TransferFragment"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/textView1" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/ic_next_24"
-                        android:backgroundTint="@color/cinza_claro"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                    app:layout_constraintTop_toBottomOf="@id/editChavePix"/>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"

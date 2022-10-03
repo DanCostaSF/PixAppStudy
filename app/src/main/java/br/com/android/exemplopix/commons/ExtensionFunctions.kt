@@ -54,3 +54,8 @@ fun View.isVisible(visible: Boolean?) {
     visibility = if (visible == true) View.VISIBLE else View.GONE
 }
 
+@BindingAdapter("isVisibility")
+fun View.isVisibility(visible: Boolean?) {
+    visibility = if (visible == true) View.VISIBLE else View.INVISIBLE
+}
+

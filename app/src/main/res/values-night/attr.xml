@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LabelShowMoneyComponent">
+        <attr name="money" format="float"/>
+    </declare-styleable>
+    
+    <declare-styleable name="PixManualContentView">
+        <attr name="txv_tittle" format="boolean"/>
+        <attr name="txv_subtittle" format="boolean"/>
+        <attr name="imageview" format="boolean"/>
+    </declare-styleable>
+</resources>

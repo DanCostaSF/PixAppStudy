@@ -14,12 +14,6 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
 
-// A formatação da data: Qua 01 Setembro 2022(X)
-// Quando abrir o bottom sheet, trazer a opção já selecionada anteriormente.(X)
-// Descrição é opcional, entao nao entra na regra de habilitar o botão.(X)
-// o CPF ou CNPJ tem que estar válido.(X)
-// E tu so vai poder selecionar a data atual até 10 dias pra frente.(X)
-
 //centralizar as bottom sheets
 //Criar componente centralizado.
 // Evitar possiblidade de abertura duplicada dos bottom sheets.
@@ -38,7 +32,6 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
         binding.apply {
             setupEditTextChangeMoney()
             setupEditTextData()
-            setupClickShowMoney()
             setupEditTextFinanceiro()
             setupEditTextTypeAccount()
             setupEditTextTitularidade()
@@ -96,12 +89,6 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
 //                isDpdOpen = false
 //            }
 //        })
-    }
-
-    private fun FragmentPixManualBinding.setupClickShowMoney() {
-        contentShowMoney.setOnClickListener {
-            _pixManualViewModel.onTextViewVisibility()
-        }
     }
 
     @SuppressLint("NewApi")

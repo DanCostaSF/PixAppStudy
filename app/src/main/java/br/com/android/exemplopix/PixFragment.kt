@@ -26,13 +26,6 @@ class PixFragment : BaseFragment<FragmentPixBinding>(
         editTextSetup()
         binding.apply {
             setupNextButton()
-            setupContentShow()
-        }
-    }
-
-    private fun FragmentPixBinding.setupContentShow() {
-        clickMoneyShow.setOnClickListener {
-            _pixViewModel.onTextViewVisibility()
         }
     }
 

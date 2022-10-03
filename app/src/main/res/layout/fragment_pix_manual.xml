@@ -43,36 +43,11 @@
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp">
 
-                <LinearLayout
-                    android:id="@+id/contentShowMoney"
+                <br.com.android.exemplopix.components.LabelShowMoneyComponent
+                    android:id="@+id/lsmc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingTop="@dimen/spacing_10">
-
-                    <TextView
-                        style="@style/TextViewSaldoLimite"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
-
-                    <TextView
-                        android:id="@+id/txtv_toque_vizu"
-                        style="@style/TextViewPixToqueVizu"
-                        isVisible="@{vm.onTextView}"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" />
-
-                    <TextView
-                        android:id="@+id/txtv_valor"
-                        style="@style/TextViewPixTxtValor"
-                        isVisible="@{vm.onTextView2}"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center_horizontal" />
-                </LinearLayout>
+                    app:money="10000"/>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"

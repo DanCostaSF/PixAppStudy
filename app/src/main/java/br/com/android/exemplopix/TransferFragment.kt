@@ -10,8 +10,6 @@ import br.com.android.exemplopix.commons.observeAndNavigateBack
 import br.com.android.exemplopix.commons.showSnackBar
 import br.com.android.exemplopix.databinding.FragmentTransferBinding
 
-// Testar no emulador com android 23. Verificar qual é a exception e corrigir.
-// Qualquer coisa me chama para tirar dúvida. Então verificar qual é o problema da 23.
 class TransferFragment : BaseFragment<FragmentTransferBinding>(
     R.layout.fragment_transfer
 ) {

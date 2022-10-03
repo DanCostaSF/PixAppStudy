@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
@@ -84,7 +83,7 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
 //            override fun cancel() {
 //                isDpdOpen = false
 //            }
-//
+
 //            override fun dismiss() {
 //                isDpdOpen = false
 //            }
@@ -137,6 +136,7 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
 
     override fun setupObservers() {
         observeAndNavigateBack(_pixManualViewModel.onNavigateBack)
+
         var btn = false
         _pixManualViewModel.validCpf.observe(viewLifecycleOwner) {
             btn = it

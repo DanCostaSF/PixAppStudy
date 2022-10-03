@@ -23,9 +23,6 @@ class TransferFragment : BaseFragment<FragmentTransferBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecycler()
-        binding.pixManual.setOnClickListener {
-            navTo(TransferFragmentDirections.actionTransferFragmentToPixManualFragment())
-        }
     }
 
     private fun setupRecycler() {
@@ -48,6 +45,13 @@ class TransferFragment : BaseFragment<FragmentTransferBinding>(
 
     override fun setupObservers() {
         observeAndNavigateBack(_transferViewModel.onNavigateBack)
+
+        _transferViewModel.onNavigateToTransfer.observe(viewLifecycleOwner) {
+            if (it) {
+                navTo(TransferFragmentDirections.actionTransferFragmentToPixManualFragment())
+                _transferViewModel.onNavigateOff()
+            }
+        }
 
         _transferViewModel.snackBarInsertString.observe(viewLifecycleOwner) { text ->
             binding.fab.setOnClickListener {

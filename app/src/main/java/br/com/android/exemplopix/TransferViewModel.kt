@@ -28,6 +28,16 @@ class TransferViewModel : ViewModel() {
         }
     }
 
+    val onNavigateToTransfer = MutableLiveData(false)
+
+    fun onNavigateOn() {
+        onNavigateToTransfer.postValue(true)
+    }
+
+    fun onNavigateOff() {
+        onNavigateToTransfer.postValue(false)
+    }
+
     val isEnabled = validType.map {
         it != ValidType.NON_VALID
     }

@@ -6,9 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
 import br.com.android.exemplopix.commons.*
 
-// Centralizar mensagem do click do botão.
-// Passar validação do CELULAR pro outro arquivo(X)
-// Quebrar em dois arquivos as validações em um arquivo e formatações em outro aqui.(X)
 class TransferViewModel : ViewModel() {
 
     val onNavigateBack = MutableLiveData(false)

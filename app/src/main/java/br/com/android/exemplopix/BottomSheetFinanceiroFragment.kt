@@ -11,7 +11,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class BottomSheetFinanceiroFragment(
     private val dialogsInterface: DialogsInterface
-    ) : BottomSheetDialogFragment() {
+) : BottomSheetDialogFragment() {
 
     private var _binding: BottomSheetFinanceiroBinding? = null
     private val binding get() = _binding!!
@@ -48,7 +48,7 @@ class BottomSheetFinanceiroFragment(
         }
 
         _bottomSheetViewModel.teste.observe(viewLifecycleOwner) {
-            when(it) {
+            when (it) {
                 TypeBank.ITAU.text -> {
                     _bottomSheetViewModel.trueItau()
                 }
@@ -58,7 +58,9 @@ class BottomSheetFinanceiroFragment(
                 TypeBank.NUBANK.text -> {
                     _bottomSheetViewModel.trueNubank()
                 }
-                else -> {  _bottomSheetViewModel.falseAll() }
+                else -> {
+                    _bottomSheetViewModel.falseAll()
+                }
             }
         }
 

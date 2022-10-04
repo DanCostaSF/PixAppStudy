@@ -49,8 +49,8 @@ fun Fragment.observeAndNavigateBack(livedata: LiveData<Boolean>) {
     }
 }
 
-@BindingAdapter("isVisible")
-fun View.isVisible(visible: Boolean?) {
+@BindingAdapter("isVisibleOrGone")
+fun View.isVisibleOrGone(visible: Boolean?) {
     visibility = if (visible == true) View.VISIBLE else View.GONE
 }
 

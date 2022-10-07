@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
         <variable
             name="vm"
-            type="br.com.android.exemplopix.BottomSheetFinanceiroViewModel" />
+            type="br.com.android.exemplopix.botsheetsantigas.BottomSheetFinanceiroViewModel" />
+
     </data>
 
     <LinearLayout
@@ -42,10 +45,10 @@
 
         <LinearLayout
             android:id="@+id/nubank"
-            android:onClick="@{() -> vm.setupNubankClick()}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/border_view"
+            android:onClick="@{() -> vm.setupNubankClick()}"
             android:orientation="horizontal">
 
             <TextView
@@ -62,18 +65,18 @@
             <CheckBox
                 android:id="@+id/checkNubank"
                 style="@style/CustomCheckBox"
-                android:checked="@{vm.checkNubank}"
-                android:clickable="false"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:checked="@{vm.checkNubank}"
+                android:clickable="false" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/sicred"
-            android:onClick="@{() -> vm.setupSicrediClick()}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/border_view"
+            android:onClick="@{() -> vm.setupSicrediClick()}"
             android:orientation="horizontal">
 
             <TextView
@@ -90,18 +93,18 @@
             <CheckBox
                 android:id="@+id/checkSicred"
                 style="@style/CustomCheckBox"
-                android:checked="@{vm.checkSicredi}"
-                android:clickable="false"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:checked="@{vm.checkSicredi}"
+                android:clickable="false" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/itau"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="@{() -> vm.setupItauClick()}"
             android:background="@drawable/border_view"
+            android:onClick="@{() -> vm.setupItauClick()}"
             android:orientation="horizontal">
 
             <TextView
@@ -118,12 +121,11 @@
             <CheckBox
                 android:id="@+id/checkItau"
                 style="@style/CustomCheckBox"
-                android:checked="@{vm.checkItau}"
-                android:clickable="false"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:checked="@{vm.checkItau}"
+                android:clickable="false" />
         </LinearLayout>
 
     </LinearLayout>
-
 </layout>

@@ -5,7 +5,7 @@
 
         <variable
             name="vm"
-            type="br.com.android.exemplopix.BotSheetTitularidadeViewModel" />
+            type="br.com.android.exemplopix.botsheetsantigas.BotSheetTitularidadeViewModel" />
     </data>
 
     <LinearLayout

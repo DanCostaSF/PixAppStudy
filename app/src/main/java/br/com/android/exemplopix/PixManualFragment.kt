@@ -7,7 +7,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
+import br.com.android.exemplopix.botsheetsantigas.*
 import br.com.android.exemplopix.commons.*
+import br.com.android.exemplopix.components.bottomsheet.BottomSheetFragment
+import br.com.android.exemplopix.components.bottomsheet.TypeDialog
 import br.com.android.exemplopix.databinding.FragmentPixManualBinding
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -49,46 +52,25 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
 
     private fun FragmentPixManualBinding.setupEditTextTitularidade() {
         edtTitularidade.setOnClickListener {
-            showBottomSheetTitularity()
+            val botsheet = BottomSheetFragment(TypeDialog.TITULARIDADE)
+            botsheet.show(requireActivity().supportFragmentManager, "BottomSheetFinanceiro")
         }
     }
 
-    private fun showBottomSheetTitularity() {
-        val botSheet = BottomSheetTitularidadeFragment(this)
-        botSheet.show(requireActivity().supportFragmentManager, "BottomSheetDialog")
-    }
-
     private fun FragmentPixManualBinding.setupEditTextTypeAccount() {
-        edtTypeConta.setOnClickListener { showBottomSheetDialogTypeAccount() }
-    }
-
-    private fun showBottomSheetDialogTypeAccount() {
-        val botSheet = BottomSheetTypeFragment(this)
-        botSheet.show(requireActivity().supportFragmentManager, "BottomSheetDialog")
+        edtTypeConta.setOnClickListener {
+            val botsheet = BottomSheetFragment(TypeDialog.TYPE_ACCOUNT)
+            botsheet.show(requireActivity().supportFragmentManager, "BottomSheetFinanceiro")
+        }
     }
 
     private fun FragmentPixManualBinding.setupEditTextFinanceiro() {
         edtInstFinanceiro.setOnClickListener {
-            if (isDpdOpen) return@setOnClickListener
-            isDpdOpen = true
-            showBottomSheetDialogFinanceiro()
+            val botsheet = BottomSheetFragment(TypeDialog.FINANCEIRO)
+            botsheet.show(requireActivity().supportFragmentManager, "BottomSheetFinanceiro")
         }
     }
 
-    private fun showBottomSheetDialogFinanceiro() {
-        val botSheet = BottomSheetFinanceiroFragment(this)
-        botSheet.show(requireActivity().supportFragmentManager, "BottomSheetDialog")
-        isDpdOpen = false
-//        botSheet.onDismiss(object: DialogInterface{
-//            override fun cancel() {
-//                isDpdOpen = false
-//            }
-
-//            override fun dismiss() {
-//                isDpdOpen = false
-//            }
-//        })
-    }
 
     @SuppressLint("NewApi")
     private fun FragmentPixManualBinding.setupEditTextData() {

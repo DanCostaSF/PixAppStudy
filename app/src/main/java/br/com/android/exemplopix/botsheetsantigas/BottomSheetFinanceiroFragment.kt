@@ -1,4 +1,4 @@
-package br.com.android.exemplopix
+package br.com.android.exemplopix.botsheetsantigas
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -78,10 +78,10 @@ class BottomSheetFinanceiroFragment(
     }
 }
 
-var type = ""
-
 enum class TypeBank(val text: String) {
     NUBANK("260 - Nubank"),
     SICREDI("270 - Sicredi"),
     ITAU("300 - Itaú")
 }
+
+var type = ""

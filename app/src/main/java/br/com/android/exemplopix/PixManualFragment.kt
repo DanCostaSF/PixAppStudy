@@ -34,9 +34,7 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
         binding.apply {
             setupEditTextChangeMoney()
             setupEditTextData()
-            setupEditTextFinanceiro()
-            setupEditTextTypeAccount()
-            setupEditTextTitularidade()
+            setupEditTextBottomSheet()
         }
     }
 
@@ -50,27 +48,36 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
         )
     }
 
-    private fun FragmentPixManualBinding.setupEditTextTitularidade() {
+    private fun FragmentPixManualBinding.setupEditTextBottomSheet() {
         edtTitularidade.setOnClickListener {
-            val botsheet = BottomSheetFragment(TypeDialog.TITULARIDADE)
-            botsheet.show(requireActivity().supportFragmentManager, "BottomSheetFinanceiro")
+            openBottomSheet(
+                TypeDialog.TITULARIDADE.text,
+                mutableListOf("Sim", "Não")
+            )
         }
-    }
 
-    private fun FragmentPixManualBinding.setupEditTextTypeAccount() {
         edtTypeConta.setOnClickListener {
-            val botsheet = BottomSheetFragment(TypeDialog.TYPE_ACCOUNT)
-            botsheet.show(requireActivity().supportFragmentManager, "BottomSheetFinanceiro")
+            openBottomSheet(
+                TypeDialog.TYPE_ACCOUNT.text,
+                mutableListOf("Corrente", "Salário", "Poupança")
+            )
         }
-    }
 
-    private fun FragmentPixManualBinding.setupEditTextFinanceiro() {
         edtInstFinanceiro.setOnClickListener {
-            val botsheet = BottomSheetFragment(TypeDialog.FINANCEIRO)
-            botsheet.show(requireActivity().supportFragmentManager, "BottomSheetFinanceiro")
+            openBottomSheet(
+                TypeDialog.FINANCEIRO.text,
+                mutableListOf("260 - Nubank", "270 - Sicredi", "300 - Itaú")
+            )
         }
     }
 
+    private fun openBottomSheet(typeBS: String, list: List<String>) {
+        val botsheet = BottomSheetFragment(
+            typeBS,
+            list
+        )
+        botsheet.show(requireActivity().supportFragmentManager, "BottomSheet")
+    }
 
     @SuppressLint("NewApi")
     private fun FragmentPixManualBinding.setupEditTextData() {

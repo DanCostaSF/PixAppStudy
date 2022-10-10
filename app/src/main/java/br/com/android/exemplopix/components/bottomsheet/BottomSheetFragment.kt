@@ -8,7 +8,10 @@ import androidx.fragment.app.viewModels
 import br.com.android.exemplopix.databinding.BottomSheetFragmentBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class BottomSheetFragment(private val typeBS: TypeDialog) : BottomSheetDialogFragment() {
+class BottomSheetFragment(
+    private val typeBS: String,
+    private val listType: List<String>
+) : BottomSheetDialogFragment() {
 
     private var _binding: BottomSheetFragmentBinding? = null
     private val binding get() = _binding!!
@@ -29,7 +32,7 @@ class BottomSheetFragment(private val typeBS: TypeDialog) : BottomSheetDialogFra
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.txvType.text = typeBS.text
+        binding.txvType.text = typeBS
         setupViewModel()
         setupObservers()
         setupRecycler()
@@ -37,17 +40,7 @@ class BottomSheetFragment(private val typeBS: TypeDialog) : BottomSheetDialogFra
     }
 
     private fun setupAdapter() {
-        when(typeBS) {
-            TypeDialog.FINANCEIRO -> {
-                bottomSheetAdapter.setData(mutableListOf("260 - Nubank", "270 - Sicredi", "300 - Itaú"))
-            }
-            TypeDialog.TYPE_ACCOUNT -> {
-                bottomSheetAdapter.setData(mutableListOf("Corrente", "Salário", "Poupança"))
-            }
-            TypeDialog.TITULARIDADE -> {
-                bottomSheetAdapter.setData(mutableListOf("Sim", "Não"))
-            }
-        }
+        bottomSheetAdapter.setData(listType)
     }
 
     private fun setupRecycler() {

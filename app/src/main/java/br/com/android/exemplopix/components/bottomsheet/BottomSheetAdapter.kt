@@ -17,7 +17,7 @@ class BottomSheetAdapter : RecyclerView.Adapter<BottomSheetAdapter.BSAViewHolder
 
     inner class BSAViewHolder(binding: RecyclerViewBottomSheetBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        val typeItem = binding.txvItem
+        private val typeItem = binding.txvItem
 
         fun bind(item: String) {
             typeItem.text = item

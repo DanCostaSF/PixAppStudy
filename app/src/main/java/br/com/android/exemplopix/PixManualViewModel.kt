@@ -21,6 +21,24 @@ class PixManualViewModel : ViewModel() {
         }
     }
 
+    val titularity = MutableLiveData<String>()
+
+    fun setTitularity(type: String) {
+        titularity.postValue(type)
+    }
+
+    val financeiro = MutableLiveData<String>()
+
+    fun setFincanceiro(type: String) {
+        financeiro.postValue(type)
+    }
+
+    val typeAccount = MutableLiveData<String>()
+
+    fun setTypeAccount(type: String) {
+        typeAccount.postValue(type)
+    }
+
     fun onNavigationClick() {
         onNavigateBack.value = true
     }

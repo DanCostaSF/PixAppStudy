@@ -1,6 +1,7 @@
 package br.com.android.exemplopix.components.bottomsheet
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +10,10 @@ import br.com.android.exemplopix.databinding.BottomSheetFragmentBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class BottomSheetFragment(
-    private val typeBS: String,
-    private val listType: List<String>
+    private val typeBS: TypeDialog,
+    private val listType: List<String>,
+    private val typeSelected: String,
+    private val typeStringDialog: (String?) -> Unit
 ) : BottomSheetDialogFragment() {
 
     private var _binding: BottomSheetFragmentBinding? = null
@@ -32,7 +35,7 @@ class BottomSheetFragment(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.txvType.text = typeBS
+        binding.txvType.text = typeBS.text
         setupViewModel()
         setupObservers()
         setupRecycler()
@@ -41,10 +44,14 @@ class BottomSheetFragment(
 
     private fun setupAdapter() {
         bottomSheetAdapter.setData(listType)
+        bottomSheetAdapter.setSelected(typeSelected)
     }
 
     private fun setupRecycler() {
-        bottomSheetAdapter = BottomSheetAdapter()
+        bottomSheetAdapter = BottomSheetAdapter {
+            typeStringDialog.invoke(it)
+            dismiss()
+        }
         binding.recycler.adapter = bottomSheetAdapter
     }
 
@@ -60,10 +67,4 @@ class BottomSheetFragment(
     private fun setupViewModel() {
         binding.vm = viewModel
     }
-}
-
-enum class TypeDialog(val text: String) {
-    FINANCEIRO("Instituição Financeira"),
-    TYPE_ACCOUNT("Tipo de conta"),
-    TITULARIDADE("Titularidade")
 }

@@ -24,6 +24,10 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
     R.layout.fragment_pix_manual
 ), DialogsInterface {
 
+    private var titularity = ""
+    private var financeiro = ""
+    private var typeAccount = ""
+
     private val _pixManualViewModel: PixManualViewModel by viewModels()
 
     private var isDpdOpen = false
@@ -51,31 +55,48 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
     private fun FragmentPixManualBinding.setupEditTextBottomSheet() {
         edtTitularidade.setOnClickListener {
             openBottomSheet(
-                TypeDialog.TITULARIDADE.text,
-                mutableListOf("Sim", "Não")
-            )
+                TypeDialog.TITULARIDADE,
+                mutableListOf("Sim", "Não"),
+                titularity
+            ) {
+                edtTitularidade.setText(it)
+                _pixManualViewModel.setTitularity(it!!)
+            }
         }
 
         edtTypeConta.setOnClickListener {
             openBottomSheet(
-                TypeDialog.TYPE_ACCOUNT.text,
-                mutableListOf("Corrente", "Salário", "Poupança")
-            )
+                TypeDialog.TYPE_ACCOUNT,
+                mutableListOf("Corrente", "Salário", "Poupança"),
+                typeAccount
+            ) {
+                edtTypeConta.setText(it)
+                _pixManualViewModel.setTypeAccount(it!!)
+            }
         }
 
         edtInstFinanceiro.setOnClickListener {
             openBottomSheet(
-                TypeDialog.FINANCEIRO.text,
-                mutableListOf("260 - Nubank", "270 - Sicredi", "300 - Itaú")
-            )
+                TypeDialog.FINANCEIRO,
+                mutableListOf("260 - Nubank", "270 - Sicredi", "300 - Itaú"),
+                financeiro
+            ) {
+                edtInstFinanceiro.setText(it)
+                _pixManualViewModel.setFincanceiro(it!!)
+            }
         }
     }
 
-    private fun openBottomSheet(typeBS: String, list: List<String>) {
+    private fun openBottomSheet(
+        typeBS: TypeDialog, list: List<String>, text: String, typeDialog: (String?) -> Unit
+    ) {
         val botsheet = BottomSheetFragment(
             typeBS,
-            list
-        )
+            list,
+            text
+        ) {
+            typeDialog.invoke(it)
+        }
         botsheet.show(requireActivity().supportFragmentManager, "BottomSheet")
     }
 
@@ -137,6 +158,18 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
             } else {
                 _pixManualViewModel.buttonOff()
             }
+        }
+
+        _pixManualViewModel.titularity.observe(viewLifecycleOwner) {
+            if (it.isNotBlank()) titularity = it
+        }
+
+        _pixManualViewModel.financeiro.observe(viewLifecycleOwner) {
+            if (it.isNotBlank()) financeiro = it
+        }
+
+        _pixManualViewModel.typeAccount.observe(viewLifecycleOwner) {
+            if (it.isNotBlank()) typeAccount = it
         }
     }
 

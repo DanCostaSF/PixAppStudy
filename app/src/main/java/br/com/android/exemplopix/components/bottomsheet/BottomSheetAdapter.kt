@@ -5,9 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import br.com.android.exemplopix.databinding.RecyclerViewBottomSheetBinding
 
-class BottomSheetAdapter : RecyclerView.Adapter<BottomSheetAdapter.BSAViewHolder>() {
+class BottomSheetAdapter(
+    private val onItemClicked: (String) -> Unit
+) : RecyclerView.Adapter<BottomSheetAdapter.BSAViewHolder>() {
 
     private val data = mutableListOf<String>()
+    private var selected: String? = null
 
     fun setData(list: List<String>) {
         this.data.clear()
@@ -15,12 +18,19 @@ class BottomSheetAdapter : RecyclerView.Adapter<BottomSheetAdapter.BSAViewHolder
         notifyDataSetChanged()
     }
 
-    inner class BSAViewHolder(binding: RecyclerViewBottomSheetBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        private val typeItem = binding.txvItem
+    fun setSelected(select: String) {
+        this.selected = select
+        notifyDataSetChanged()
+    }
 
-        fun bind(item: String) {
-            typeItem.text = item
+    inner class BSAViewHolder(val binding: RecyclerViewBottomSheetBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(item: String) = binding.run {
+            txvItem.text = item
+            content.setOnClickListener {
+                onItemClicked(item)
+            }
         }
     }
 
@@ -38,7 +48,12 @@ class BottomSheetAdapter : RecyclerView.Adapter<BottomSheetAdapter.BSAViewHolder
     override fun onBindViewHolder(
         holder: BSAViewHolder,
         position: Int
-    ) = holder.bind(data[position])
+    ) {
+        if (data[position] == selected) {
+            holder.binding.checkbox.isChecked = true
+        }
+        holder.bind(data[position])
+    }
 
     override fun getItemCount() = data.size
 }

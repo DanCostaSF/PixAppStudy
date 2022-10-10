@@ -14,5 +14,4 @@ class BottomSheetViewModel : ViewModel() {
     fun doneCloseDialog() {
         closeDialog.postValue(false)
     }
-
 }

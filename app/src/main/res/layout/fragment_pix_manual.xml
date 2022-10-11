@@ -47,7 +47,7 @@
                     android:id="@+id/lsmc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:money="10000"/>
+                    app:money="10000" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -110,7 +110,8 @@
                         android:id="@+id/edtInstFinanceiro"
                         style="@style/EditTextInstFinPixManual"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:text="@{vm.financeiro}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -150,7 +151,8 @@
                         android:id="@+id/edtTypeConta"
                         style="@style/EditTextTypeContaPixManual"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:text="@{vm.typeAccount}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -164,7 +166,8 @@
                         android:id="@+id/edtTitularidade"
                         style="@style/EditTextTitularidadePixManual"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:text="@{vm.titularity}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -188,10 +191,10 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtCpfCnpj"
                         style="@style/EditTextCpfCpnjPixManual"
-                        android:text="@={vm.editTextCpf}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textImeMultiLine" />
+                        android:inputType="textImeMultiLine"
+                        android:text="@={vm.editTextCpf}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout

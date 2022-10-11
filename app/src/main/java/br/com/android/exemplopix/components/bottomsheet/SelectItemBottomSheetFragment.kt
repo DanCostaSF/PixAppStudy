@@ -1,18 +1,49 @@
 package br.com.android.exemplopix.components.bottomsheet
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.LayoutRes
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import br.com.android.exemplopix.databinding.BottomSheetFragmentBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class BottomSheetFragment(
+// Para o bottom sheet
+//abstract class BaseFragment<T : ViewDataBinding>(
+//    @LayoutRes private val layoutId: Int
+//) : Fragment() {
+//
+//    protected lateinit var binding: T
+//
+//    override fun onCreateView(
+//        inflater: LayoutInflater,
+//        container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ) = (DataBindingUtil.inflate(inflater, layoutId, container, false) as T).apply {
+//        lifecycleOwner = viewLifecycleOwner
+//        binding = this
+//    }.root
+//
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//
+//        setupViewModel()
+//        setupObservers()
+//    }
+//
+//    abstract fun setupViewModel()
+//
+//    a
+
+
+class SelectItemBottomSheetFragment(
     private val typeBS: TypeDialog,
     private val listType: List<String>,
-    private val typeSelected: String,
+    private val typeSelected: String?,
     private val typeStringDialog: (String?) -> Unit
 ) : BottomSheetDialogFragment() {
 
@@ -21,7 +52,7 @@ class BottomSheetFragment(
 
     private lateinit var bottomSheetAdapter: BottomSheetAdapter
 
-    private val viewModel: BottomSheetViewModel by viewModels()
+    private val viewModel: SelectItemViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,7 +66,7 @@ class BottomSheetFragment(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.txvType.text = typeBS.text
+        binding.txvType.text = typeBS.title
         setupViewModel()
         setupObservers()
         setupRecycler()

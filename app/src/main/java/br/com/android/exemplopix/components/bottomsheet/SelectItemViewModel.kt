@@ -3,7 +3,7 @@ package br.com.android.exemplopix.components.bottomsheet
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class BottomSheetViewModel : ViewModel() {
+abstract class BottomSheetBaseViewModel : ViewModel() {
 
     val closeDialog = MutableLiveData(false)
 
@@ -15,3 +15,5 @@ class BottomSheetViewModel : ViewModel() {
         closeDialog.postValue(false)
     }
 }
+
+class SelectItemViewModel : BottomSheetBaseViewModel()

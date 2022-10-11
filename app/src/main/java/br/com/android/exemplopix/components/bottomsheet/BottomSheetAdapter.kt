@@ -18,7 +18,7 @@ class BottomSheetAdapter(
         notifyDataSetChanged()
     }
 
-    fun setSelected(select: String) {
+    fun setSelected(select: String?) {
         this.selected = select
         notifyDataSetChanged()
     }

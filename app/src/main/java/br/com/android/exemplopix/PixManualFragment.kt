@@ -7,26 +7,26 @@ import android.os.Bundle
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
-import br.com.android.exemplopix.botsheetsantigas.*
+import androidx.lifecycle.LiveData
+import br.com.android.exemplopix.botsheetsantigas.TypeBank
+import br.com.android.exemplopix.botsheetsantigas.type
 import br.com.android.exemplopix.commons.*
-import br.com.android.exemplopix.components.bottomsheet.BottomSheetFragment
+import br.com.android.exemplopix.components.bottomsheet.SelectItemBottomSheetFragment
 import br.com.android.exemplopix.components.bottomsheet.TypeDialog
 import br.com.android.exemplopix.databinding.FragmentPixManualBinding
+import com.google.android.material.textfield.TextInputEditText
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
 
-//centralizar as bottom sheets
-//Criar componente centralizado.
-// Evitar possiblidade de abertura duplicada dos bottom sheets.
+// As listas exibida nos bottom sheet, colocar dentro do SHared Preferences.
+// Acessar o shared preferences pelo view e expor os dados para cá.
 
 class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
     R.layout.fragment_pix_manual
 ), DialogsInterface {
 
-    private var titularity = ""
-    private var financeiro = ""
-    private var typeAccount = ""
+    val bottomSheetTag = "BottomSheet"
 
     private val _pixManualViewModel: PixManualViewModel by viewModels()
 
@@ -44,60 +44,56 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
 
     private fun FragmentPixManualBinding.setupEditTextChangeMoney() {
         val mlocal = Locale("pt", "BR")
-        edtMoneyChange.addTextChangedListener(
-            MaskMoney(edtMoneyChange, mlocal) { vl ->
-                val value = vl.toString()
-                valor = value
-            }
-        )
+        edtMoneyChange.addTextChangedListener(MaskMoney(edtMoneyChange, mlocal) { vl ->
+            val value = vl.toString()
+            valor = value
+        })
     }
 
     private fun FragmentPixManualBinding.setupEditTextBottomSheet() {
-        edtTitularidade.setOnClickListener {
-            openBottomSheet(
-                TypeDialog.TITULARIDADE,
-                mutableListOf("Sim", "Não"),
-                titularity
-            ) {
-                edtTitularidade.setText(it)
-                _pixManualViewModel.setTitularity(it!!)
-            }
+        openBottomSheet(
+            edtTitularidade,
+            TypeDialog.TITULARIDADE,
+            listOf("Sim", "Não"),
+            _pixManualViewModel.titularity,
+        ) {
+            _pixManualViewModel.setTitularity(it!!)
         }
 
-        edtTypeConta.setOnClickListener {
-            openBottomSheet(
-                TypeDialog.TYPE_ACCOUNT,
-                mutableListOf("Corrente", "Salário", "Poupança"),
-                typeAccount
-            ) {
-                edtTypeConta.setText(it)
-                _pixManualViewModel.setTypeAccount(it!!)
-            }
+        openBottomSheet(
+            edtTypeConta,
+            TypeDialog.TYPE_ACCOUNT,
+            listOf("Corrente", "Salário", "Poupança"),
+            _pixManualViewModel.typeAccount,
+        ) {
+            _pixManualViewModel.setTypeAccount(it!!)
         }
 
-        edtInstFinanceiro.setOnClickListener {
-            openBottomSheet(
-                TypeDialog.FINANCEIRO,
-                mutableListOf("260 - Nubank", "270 - Sicredi", "300 - Itaú"),
-                financeiro
-            ) {
-                edtInstFinanceiro.setText(it)
-                _pixManualViewModel.setFincanceiro(it!!)
-            }
+        openBottomSheet(
+            edtInstFinanceiro,
+            TypeDialog.FINANCEIRO,
+            listOf("260 - Nubank", "270 - Sicredi", "300 - Itaú"),
+            _pixManualViewModel.financeiro,
+        ) {
+            _pixManualViewModel.setFincanceiro(it!!)
         }
     }
 
     private fun openBottomSheet(
-        typeBS: TypeDialog, list: List<String>, text: String, typeDialog: (String?) -> Unit
+        editText: TextInputEditText,
+        typeBS: TypeDialog,
+        list: List<String>,
+        liveData: LiveData<String>,
+        typeDialog: (String?) -> Unit
     ) {
-        val botsheet = BottomSheetFragment(
-            typeBS,
-            list,
-            text
-        ) {
-            typeDialog.invoke(it)
+        editText.setOnClickListener {
+            val botsheet = SelectItemBottomSheetFragment(
+                typeBS, list, liveData.value
+            ) {
+                typeDialog.invoke(it)
+            }
+            botsheet.show(requireActivity().supportFragmentManager, bottomSheetTag)
         }
-        botsheet.show(requireActivity().supportFragmentManager, "BottomSheet")
     }
 
     @SuppressLint("NewApi")
@@ -113,17 +109,13 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
         edtData.setOnClickListener {
             isDpdOpen = true
             val dpd = DatePickerDialog(
-                requireContext(),
-                { _, mYear, mMonth, mDay ->
+                requireContext(), { _, mYear, mMonth, mDay ->
                     binding.edtData.setText(filterDate(mMonth, mDay, mYear))
                     day = mDay
                     month = mMonth
                     year = mYear
                     isDpdOpen = false
-                },
-                year,
-                month,
-                day
+                }, year, month, day
             )
             val dat = Date()
             dpd.datePicker.minDate = dat.time
@@ -159,18 +151,6 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
                 _pixManualViewModel.buttonOff()
             }
         }
-
-        _pixManualViewModel.titularity.observe(viewLifecycleOwner) {
-            if (it.isNotBlank()) titularity = it
-        }
-
-        _pixManualViewModel.financeiro.observe(viewLifecycleOwner) {
-            if (it.isNotBlank()) financeiro = it
-        }
-
-        _pixManualViewModel.typeAccount.observe(viewLifecycleOwner) {
-            if (it.isNotBlank()) typeAccount = it
-        }
     }
 
     override fun titularity(text: String) {
@@ -186,16 +166,15 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
         binding.edtTypeConta.setText(text)
     }
 
-    private fun getAllFields() =
-        listOf(
-            binding.edtData,
-            binding.edtBeneficiario,
-            binding.edtInstFinanceiro,
-            binding.edtAgencia,
-            binding.edtConta,
-            binding.edtTypeConta,
-            binding.edtTitularidade
-        ).validateField()
+    private fun getAllFields() = listOf(
+        binding.edtData,
+        binding.edtBeneficiario,
+        binding.edtInstFinanceiro,
+        binding.edtAgencia,
+        binding.edtConta,
+        binding.edtTypeConta,
+        binding.edtTitularidade
+    ).validateField()
 
     companion object {
         private var valor = ""

@@ -20,13 +20,13 @@ import java.time.format.DateTimeFormatter
 import java.util.*
 
 // As listas exibida nos bottom sheet, colocar dentro do SHared Preferences.
-// Acessar o shared preferences pelo view e expor os dados para cá.
+// Acessar o shared preferences pelo viewmodel e expor os dados para cá.
 
 class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
     R.layout.fragment_pix_manual
 ), DialogsInterface {
 
-    val bottomSheetTag = "BottomSheet"
+    private val bottomSheetTag = "BottomSheet"
 
     private val _pixManualViewModel: PixManualViewModel by viewModels()
 
@@ -44,10 +44,14 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
 
     private fun FragmentPixManualBinding.setupEditTextChangeMoney() {
         val mlocal = Locale("pt", "BR")
-        edtMoneyChange.addTextChangedListener(MaskMoney(edtMoneyChange, mlocal) { vl ->
-            val value = vl.toString()
-            valor = value
-        })
+        edtMoneyChange.addTextChangedListener(
+            MaskMoney(
+                edtMoneyChange,
+                mlocal
+            ) { vl ->
+                val value = vl.toString()
+                valor = value
+            })
     }
 
     private fun FragmentPixManualBinding.setupEditTextBottomSheet() {
@@ -126,7 +130,11 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun filterDate(mMonth: Int, mDay: Int, mYear: Int): String {
+    private fun filterDate(
+        mMonth: Int,
+        mDay: Int,
+        mYear: Int
+    ): String {
         val data = LocalDate.of(mYear, mMonth + 1, mDay)
         val simplaDateFormat = DateTimeFormatter.ofPattern("E dd LLLL yyyy", Locale("pt", "BR"))
         return data.format(simplaDateFormat)

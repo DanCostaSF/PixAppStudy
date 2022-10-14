@@ -70,8 +70,10 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
             TypeDialog.TYPE_ACCOUNT,
             listOf("Corrente", "Salário", "Poupança"),
             _pixManualViewModel.typeAccount,
-        ) {
-            _pixManualViewModel.setTypeAccount(it!!)
+        ) { typeAccount ->
+            typeAccount?.let {
+                _pixManualViewModel.setTypeAccount(it)
+            }
         }
 
         val listaFinanceiro = listOf("260 - Nubank", "270 - Sicredi", "300 - Itaú", null)

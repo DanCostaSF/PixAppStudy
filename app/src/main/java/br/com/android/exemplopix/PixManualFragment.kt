@@ -59,8 +59,9 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
             edtTitularidade,
             TypeDialog.TITULARIDADE,
             listOf("Sim", "Não"),
-            _pixManualViewModel.titularity,
+            _pixManualViewModel.titularity
         ) {
+
             _pixManualViewModel.setTitularity(it!!)
         }
 
@@ -73,20 +74,24 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
             _pixManualViewModel.setTypeAccount(it!!)
         }
 
+        val listaFinanceiro = listOf("260 - Nubank", "270 - Sicredi", "300 - Itaú", null)
+
         openBottomSheet(
             edtInstFinanceiro,
             TypeDialog.FINANCEIRO,
-            listOf("260 - Nubank", "270 - Sicredi", "300 - Itaú"),
-            _pixManualViewModel.financeiro,
-        ) {
-            _pixManualViewModel.setFincanceiro(it!!)
+            listaFinanceiro,
+            _pixManualViewModel.financeiro
+        ) { finance ->
+            finance?.let {
+                _pixManualViewModel.setFincanceiro(it)
+            }
         }
     }
 
     private fun openBottomSheet(
         editText: TextInputEditText,
         typeBS: TypeDialog,
-        list: List<String>,
+        list: List<String?>,
         liveData: LiveData<String>,
         typeDialog: (String?) -> Unit
     ) {
@@ -136,7 +141,10 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
         mYear: Int
     ): String {
         val data = LocalDate.of(mYear, mMonth + 1, mDay)
-        val simplaDateFormat = DateTimeFormatter.ofPattern("E dd LLLL yyyy", Locale("pt", "BR"))
+        val simplaDateFormat = DateTimeFormatter.ofPattern(
+            "E dd LLLL yyyy",
+            Locale("pt", "BR")
+        )
         return data.format(simplaDateFormat)
     }
 

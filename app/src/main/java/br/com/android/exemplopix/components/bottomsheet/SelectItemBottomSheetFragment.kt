@@ -42,7 +42,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class SelectItemBottomSheetFragment(
     private val typeBS: TypeDialog,
-    private val listType: List<String>,
+    private val listType: List<String?>,
     private val typeSelected: String?,
     private val typeStringDialog: (String?) -> Unit
 ) : BottomSheetDialogFragment() {

@@ -6,13 +6,13 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.android.exemplopix.databinding.RecyclerViewBottomSheetBinding
 
 class BottomSheetAdapter(
-    private val onItemClicked: (String) -> Unit
+    private val onItemClicked: (String?) -> Unit
 ) : RecyclerView.Adapter<BottomSheetAdapter.BSAViewHolder>() {
 
-    private val data = mutableListOf<String>()
+    private val data = mutableListOf<String?>()
     private var selected: String? = null
 
-    fun setData(list: List<String>) {
+    fun setData(list: List<String?>) {
         this.data.clear()
         this.data.addAll(list)
         notifyDataSetChanged()
@@ -26,7 +26,7 @@ class BottomSheetAdapter(
     inner class BSAViewHolder(val binding: RecyclerViewBottomSheetBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: String) = binding.run {
+        fun bind(item: String?) = binding.run {
             txvItem.text = item
             content.setOnClickListener {
                 onItemClicked(item)

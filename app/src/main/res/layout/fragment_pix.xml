@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vm"
-            type="br.com.android.exemplopix.PixViewModel" />
+            type="br.com.android.exemplopix.ui.pix.PixViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -48,7 +48,7 @@
                 android:background="@drawable/view_bg"
                 app:layout_constraintVertical_bias="0.3">
 
-                <br.com.android.exemplopix.components.LabelShowMoneyComponent
+                <br.com.android.exemplopix.ui.components.LabelShowMoneyComponent
                     android:id="@+id/lsmc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

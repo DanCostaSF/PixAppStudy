@@ -1,9 +1,10 @@
-package br.com.android.exemplopix
+package br.com.android.exemplopix.ui.transfer
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
+import br.com.android.exemplopix.R
 import br.com.android.exemplopix.commons.BaseFragment
 import br.com.android.exemplopix.commons.navTo
 import br.com.android.exemplopix.commons.observeAndNavigateBack

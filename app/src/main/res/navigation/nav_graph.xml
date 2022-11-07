@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/pixFragment"
-        android:name="br.com.android.exemplopix.PixFragment"
+        android:name="br.com.android.exemplopix.ui.pix.PixFragment"
         android:label="PixFragment"
         tools:layout="@layout/fragment_pix">
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/infoFragment"
-        android:name="br.com.android.exemplopix.InfoFragment"
+        android:name="br.com.android.exemplopix.ui.info.InfoFragment"
         android:label="InfoFragment"
         tools:layout="@layout/fragment_info">
         <argument
@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/transferFragment"
-        android:name="br.com.android.exemplopix.TransferFragment"
+        android:name="br.com.android.exemplopix.ui.transfer.TransferFragment"
         android:label="TransferFragment"
         tools:layout="@layout/fragment_transfer">
         <action
@@ -39,7 +39,7 @@
     </fragment>
     <fragment
         android:id="@+id/pixManualFragment"
-        android:name="br.com.android.exemplopix.PixManualFragment"
+        android:name="br.com.android.exemplopix.ui.pixmanual.PixManualFragment"
         android:label="PixManualFragment"
         tools:layout="@layout/fragment_pix_manual"/>
 </navigation>

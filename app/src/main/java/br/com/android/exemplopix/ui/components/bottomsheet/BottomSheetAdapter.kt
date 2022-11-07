@@ -1,4 +1,4 @@
-package br.com.android.exemplopix.components.bottomsheet
+package br.com.android.exemplopix.ui.components.bottomsheet
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

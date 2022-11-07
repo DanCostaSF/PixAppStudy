@@ -1,9 +1,10 @@
-package br.com.android.exemplopix
+package br.com.android.exemplopix.ui.pix
 
 
 import android.view.MenuItem
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import br.com.android.exemplopix.R
 
 class PixViewModel : ViewModel() {
 

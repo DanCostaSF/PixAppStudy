@@ -1,4 +1,4 @@
-package br.com.android.exemplopix.components.bottomsheet
+package br.com.android.exemplopix.ui.components.bottomsheet
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -11,34 +11,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import br.com.android.exemplopix.databinding.BottomSheetFragmentBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-
-// Para o bottom sheet
-//abstract class BaseFragment<T : ViewDataBinding>(
-//    @LayoutRes private val layoutId: Int
-//) : Fragment() {
-//
-//    protected lateinit var binding: T
-//
-//    override fun onCreateView(
-//        inflater: LayoutInflater,
-//        container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ) = (DataBindingUtil.inflate(inflater, layoutId, container, false) as T).apply {
-//        lifecycleOwner = viewLifecycleOwner
-//        binding = this
-//    }.root
-//
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//        setupViewModel()
-//        setupObservers()
-//    }
-//
-//    abstract fun setupViewModel()
-//
-//    a
-
 
 class SelectItemBottomSheetFragment(
     private val typeBS: TypeDialog,

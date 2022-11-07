@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vm"
-            type="br.com.android.exemplopix.InfoViewModel" />
+            type="br.com.android.exemplopix.ui.info.InfoViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

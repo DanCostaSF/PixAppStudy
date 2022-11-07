@@ -6,7 +6,7 @@
 
         <variable
             name="vm"
-            type="br.com.android.exemplopix.PixManualViewModel" />
+            type="br.com.android.exemplopix.ui.pixmanual.PixManualViewModel" />
     </data>
 
     <LinearLayout
@@ -43,7 +43,7 @@
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp">
 
-                <br.com.android.exemplopix.components.LabelShowMoneyComponent
+                <br.com.android.exemplopix.ui.components.LabelShowMoneyComponent
                     android:id="@+id/lsmc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

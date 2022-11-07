@@ -1,4 +1,4 @@
-package br.com.android.exemplopix.components
+package br.com.android.exemplopix.ui.components
 
 import android.annotation.SuppressLint
 import android.content.Context

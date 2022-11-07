@@ -1,4 +1,4 @@
-package br.com.android.exemplopix
+package br.com.android.exemplopix.ui.pixmanual
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
@@ -8,19 +8,18 @@ import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
+import br.com.android.exemplopix.R
 import br.com.android.exemplopix.botsheetsantigas.TypeBank
 import br.com.android.exemplopix.botsheetsantigas.type
 import br.com.android.exemplopix.commons.*
-import br.com.android.exemplopix.components.bottomsheet.SelectItemBottomSheetFragment
-import br.com.android.exemplopix.components.bottomsheet.TypeDialog
+import br.com.android.exemplopix.ui.components.bottomsheet.SelectItemBottomSheetFragment
+import br.com.android.exemplopix.ui.components.bottomsheet.TypeDialog
 import br.com.android.exemplopix.databinding.FragmentPixManualBinding
 import com.google.android.material.textfield.TextInputEditText
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
 
-// As listas exibida nos bottom sheet, colocar dentro do SHared Preferences.
-// Acessar o shared preferences pelo viewmodel e expor os dados para cá.
 
 class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
     R.layout.fragment_pix_manual
@@ -76,7 +75,7 @@ class PixManualFragment : BaseFragment<FragmentPixManualBinding>(
             }
         }
 
-        val listaFinanceiro = listOf("260 - Nubank", "270 - Sicredi", "300 - Itaú", null)
+        val listaFinanceiro = listOf("260 - Nubank", "270 - Sicredi", "300 - Itaú")
 
         openBottomSheet(
             edtInstFinanceiro,

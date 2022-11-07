@@ -1,4 +1,4 @@
-package br.com.android.exemplopix
+package br.com.android.exemplopix.ui.pixmanual
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

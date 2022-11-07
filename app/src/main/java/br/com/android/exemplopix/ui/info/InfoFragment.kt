@@ -1,11 +1,10 @@
-package br.com.android.exemplopix
+package br.com.android.exemplopix.ui.info
 
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import br.com.android.exemplopix.R
 import br.com.android.exemplopix.commons.BaseFragment
 import br.com.android.exemplopix.commons.navBack
 import br.com.android.exemplopix.commons.showAlertDialog

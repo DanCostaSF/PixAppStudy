@@ -1,8 +1,9 @@
-package br.com.android.exemplopix
+package br.com.android.exemplopix.ui.pix
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import br.com.android.exemplopix.R
 import br.com.android.exemplopix.commons.BaseFragment
 import br.com.android.exemplopix.commons.MaskMoney
 import br.com.android.exemplopix.commons.MaskMoney.Companion.numero
@@ -24,19 +25,19 @@ class PixFragment : BaseFragment<FragmentPixBinding>(
         super.onViewCreated(view, savedInstanceState)
 
         editTextSetup()
-        binding.apply {
-            setupNextButton()
-        }
+        binding.setupNextButton()
+
     }
 
     private fun editTextSetup() {
         val mlocal = Locale("pt", "BR")
-        binding.editText.addTextChangedListener(
-            MaskMoney(binding.editText, mlocal) { vl ->
-                val value = vl.toString()
-                _pixViewModel.onButtonDisable(value)
-            }
-        )
+        binding.apply {
+            editText.addTextChangedListener(
+                MaskMoney(editText, mlocal) { vl ->
+                    _pixViewModel.onButtonDisable(vl.toString())
+                }
+            )
+        }
     }
 
     private fun setupInfoButton() {

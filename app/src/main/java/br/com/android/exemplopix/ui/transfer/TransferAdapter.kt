@@ -1,8 +1,9 @@
-package br.com.android.exemplopix
+package br.com.android.exemplopix.ui.transfer
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import br.com.android.exemplopix.data.model.ContactsPixModel
 import br.com.android.exemplopix.databinding.ContactsPixAdapterBinding
 
 class TransferAdapter : RecyclerView.Adapter<TransferAdapter.TransferViewHolder>() {

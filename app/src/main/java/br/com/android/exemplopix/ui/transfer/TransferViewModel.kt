@@ -1,10 +1,11 @@
-package br.com.android.exemplopix
+package br.com.android.exemplopix.ui.transfer
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
 import br.com.android.exemplopix.commons.*
+import br.com.android.exemplopix.data.model.ContactsPixModel
 
 class TransferViewModel : ViewModel() {
 

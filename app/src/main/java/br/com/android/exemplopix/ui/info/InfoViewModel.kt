@@ -1,9 +1,8 @@
-package br.com.android.exemplopix
+package br.com.android.exemplopix.ui.info
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
-import androidx.lifecycle.viewModelScope
 
 class InfoViewModel : ViewModel() {
 

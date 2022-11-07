@@ -6,7 +6,7 @@
     <data>
         <variable
             name="vm"
-            type="br.com.android.exemplopix.TransferViewModel" />
+            type="br.com.android.exemplopix.ui.transfer.TransferViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -74,7 +74,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/text" />
 
-                <br.com.android.exemplopix.components.PixManualContentView
+                <br.com.android.exemplopix.ui.components.PixManualContentView
                     android:id="@+id/pixManual"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

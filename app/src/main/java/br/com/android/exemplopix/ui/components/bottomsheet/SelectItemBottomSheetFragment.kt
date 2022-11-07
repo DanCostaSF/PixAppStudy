@@ -43,6 +43,10 @@ class SelectItemBottomSheetFragment(
         setupObservers()
         setupRecycler()
         setupAdapter()
+        //        val bottomSheetBehavior = BottomSheetBehavior.from(view.parent as View)
+//        bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+//        binding.layout.minHeight =
+//            (Resources.getSystem().displayMetrics.heightPixels * 0.80).toInt()
     }
 
     private fun setupAdapter() {

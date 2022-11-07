@@ -9,8 +9,6 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
 import br.com.android.exemplopix.R
-import br.com.android.exemplopix.botsheetsantigas.TypeBank
-import br.com.android.exemplopix.botsheetsantigas.type
 import br.com.android.exemplopix.commons.*
 import br.com.android.exemplopix.ui.components.bottomsheet.SelectItemBottomSheetFragment
 import br.com.android.exemplopix.ui.components.bottomsheet.TypeDialog
